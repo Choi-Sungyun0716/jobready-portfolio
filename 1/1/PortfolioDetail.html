@@ -23,11 +23,16 @@ a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
 .tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;padding:24px 0;border-top:1px solid #E1E3DC}
 .k{font-size:12.5px;font-weight:700;color:#2443C4;letter-spacing:.3px}
 .ph{background:#2B2F35;border-radius:10px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;color:#C9CCD2;font-family:'JetBrains Mono',monospace;font-size:12.5px}
+.hero-photo,.shot-photo{object-fit:cover;border-radius:10px;background:#F4F5F2;cursor:zoom-in}
+.hero-photo{flex:0 0 440px;width:440px;max-width:42%;aspect-ratio:4/3;height:auto}
+.shot-photo{aspect-ratio:16/10;width:100%;height:auto}
+.zoom{position:fixed;inset:0;z-index:40;background:rgba(21,23,26,.86);display:flex;align-items:center;justify-content:center;padding:28px;cursor:zoom-out}
+.zoom img{max-width:min(1100px,100%);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px}
 .empty{background:#FFFFFF;border:1.5px dashed #C7CAC0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#6B7079;font-family:'JetBrains Mono',monospace;font-size:13.5px;box-sizing:border-box}
 .shot{position:relative}
 .shot::before{content:"";position:absolute;inset:10px -8px -8px 10px;background:#E4E6E0;border-radius:14px;z-index:0}
 .shot>div{position:relative;z-index:1;background:#FFFFFF;border:1px solid #E1E3DC;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:12px}
-@media (max-width:760px){.flow{flex-direction:column}.arr{transform:rotate(90deg)}.g3,.g2{grid-template-columns:minmax(0,1fr)!important}.tr{grid-template-columns:minmax(0,1fr);gap:12px}.wrap{padding:20px 16px!important}.hero{flex-direction:column}}
+@media (max-width:760px){.flow{flex-direction:column}.arr{transform:rotate(90deg)}.g3,.g2{grid-template-columns:minmax(0,1fr)!important}.tr{grid-template-columns:minmax(0,1fr);gap:12px}.wrap{padding:20px 16px!important}.hero{flex-direction:column}.hero-photo,.ph{width:100%;max-width:100%;flex-basis:auto}}
 </style>
 <script src="../_runtime/preact.min.js"></script>
 <script src="../_runtime/dc-lite.js"></script>
@@ -59,10 +64,10 @@ a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
 ]}
 ]},
 {"t":"sc-if","a":{"value":"{{hasHero}}","hint-placeholder-val":"{{ false }}"},"c":[
-{"t":"img","a":{"src":"{{heroSrc}}","alt":"{{heroLabel}}","style":"flex:0 1 460px;aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:10px"}}
+{"t":"img","a":{"class":"hero-photo","src":"{{heroSrc}}","alt":"{{heroLabel}}","onClick":"{{openHero}}"}}
 ]},
 {"t":"sc-if","a":{"value":"{{showHeroText}}","hint-placeholder-val":"{{ true }}"},"c":[
-{"t":"div","a":{"class":"ph","role":"img","aria-label":"{{heroLabel}}","style":"flex:0 1 460px;aspect-ratio:4/3;width:100%"},"c":["{{heroLabel}}"]}
+{"t":"div","a":{"class":"ph hero-photo","role":"img","aria-label":"{{heroLabel}}"},"c":["{{heroLabel}}"]}
 ]}
 ]}
 ]},
@@ -104,7 +109,7 @@ a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
 {"t":"sc-for","a":{"list":"{{screens}}","as":"s","hint-placeholder-count":"1"},"c":[
 {"t":"div","a":{"class":"shot"},"c":[{"t":"div","c":[
 {"t":"sc-if","a":{"value":"{{s.hasImage}}","hint-placeholder-val":"{{ false }}"},"c":[
-{"t":"img","a":{"src":"{{s.src}}","alt":"{{s.label}}","style":"aspect-ratio:16/10;width:100%;object-fit:cover;border-radius:10px"}}
+{"t":"img","a":{"class":"shot-photo","src":"{{s.src}}","alt":"{{s.label}}","onClick":"{{s.open}}"}}
 ]},
 {"t":"sc-if","a":{"value":"{{s.showText}}","hint-placeholder-val":"{{ true }}"},"c":[
 {"t":"div","a":{"class":"empty","style":"aspect-ratio:16/10"},"c":["{{s.fileLabel}}"]}
@@ -115,6 +120,12 @@ a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
 ]}
 ]}
 ]}
+]},
+{"t":"sc-if","a":{"value":"{{hasZoom}}","hint-placeholder-val":"{{ false }}"},"c":[
+{"t":"div","a":{"class":"zoom","onClick":"{{closeZoom}}","role":"dialog","aria-label":"확대 이미지"},"c":[
+{"t":"img","a":{"src":"{{zoom}}","alt":""}}
+]}
+]}
 ]}
 ];
 window.__DC_DEFAULTS = {};</script>
@@ -122,7 +133,7 @@ window.__DC_DEFAULTS = {};</script>
 <script>
 
 class Component extends DCLogic {
-  constructor(p){ super(p); this.state = { toast: false }; }
+  constructor(p){ super(p); this.state = { toast: false, zoom: "" }; }
   renderVals() {
     const page = window.__PAGE_DATA || {
       kind: "개인 프로젝트",
@@ -151,6 +162,7 @@ class Component extends DCLogic {
       return "";
     }
     const heroSrc = imageAddress(page.hero_image);
+    const openImage = (src) => { if (src) this.setState({ zoom: src }); };
     const screens = (page.screens || []).map(function (item) {
       var src = imageAddress(item.file);
       return {
@@ -158,7 +170,8 @@ class Component extends DCLogic {
         fileLabel: item.file || item.label || "이미지 없음",
         src: src,
         hasImage: !!src,
-        showText: !src
+        showText: !src,
+        open: function () { openImage(src); }
       };
     });
     return {
@@ -173,6 +186,10 @@ class Component extends DCLogic {
       heroSrc: heroSrc,
       hasHero: !!heroSrc,
       showHeroText: !heroSrc,
+      openHero: function () { openImage(heroSrc); },
+      zoom: this.state.zoom || "",
+      hasZoom: !!this.state.zoom,
+      closeZoom: () => this.setState({ zoom: "" }),
       flow: (page.flow || []).map(function (label, index) {
         return { no: String(index + 1).padStart(2, "0"), label: label };
       }),
