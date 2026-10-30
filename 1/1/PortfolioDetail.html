@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로젝트 상세</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F2}
+a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
+.sh{display:flex;align-items:center;gap:16px;margin:0 0 20px}
+.sh h2{margin:0;font-size:22px;letter-spacing:-0.4px;white-space:nowrap}
+.sh i{flex:1;height:1px;background:#D9DBD3}
+.tc{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:8px;background:#F1F2EE;font-size:13.5px;font-weight:500;color:#3D424A}
+.tc b{width:8px;height:8px;border-radius:2px;background:#2443C4}
+.step{flex:1;min-width:0;background:#FFFFFF;border:1px solid #E1E3DC;border-left:3px solid #2443C4;border-radius:10px;padding:18px 16px;font-size:15px;font-weight:600}
+.step small{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7079;font-weight:500;margin-bottom:6px}
+.arr{color:#8A8F96;font-size:20px;flex:none}
+.dc{background:#FFFFFF;border:1px solid #E1E3DC;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.dc h3{margin:0;font-size:17px}
+.dc p{margin:0;font-size:14.5px;line-height:1.7;color:#3D424A}
+.tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;padding:24px 0;border-top:1px solid #E1E3DC}
+.k{font-size:12.5px;font-weight:700;color:#2443C4;letter-spacing:.3px}
+.ph{background:#2B2F35;border-radius:10px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;color:#C9CCD2;font-family:'JetBrains Mono',monospace;font-size:12.5px}
+.empty{background:#FFFFFF;border:1.5px dashed #C7CAC0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#6B7079;font-family:'JetBrains Mono',monospace;font-size:13.5px;box-sizing:border-box}
+.shot{position:relative}
+.shot::before{content:"";position:absolute;inset:10px -8px -8px 10px;background:#E4E6E0;border-radius:14px;z-index:0}
+.shot>div{position:relative;z-index:1;background:#FFFFFF;border:1px solid #E1E3DC;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:12px}
+@media (max-width:760px){.flow{flex-direction:column}.arr{transform:rotate(90deg)}.g3,.g2{grid-template-columns:minmax(0,1fr)!important}.tr{grid-template-columns:minmax(0,1fr);gap:12px}.wrap{padding:20px 16px!important}.hero{flex-direction:column}}
+</style>
+<script src="../_runtime/preact.min.js"></script>
+<script src="../_runtime/dc-lite.js"></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<script>window.__DC_TREE = [
+{"t":"div","a":{"style":"min-height:100vh;font-family:'IBM Plex Sans KR',system-ui,sans-serif;color:#15171A;background:#F4F5F2"},"c":[
+{"t":"main","a":{"class":"wrap","style":"max-width:1180px;margin:0 auto;padding:28px 32px 80px;display:flex;flex-direction:column;gap:56px"},"c":[
+{"t":"div","a":{"style":"display:flex;flex-direction:column;gap:16px"},"c":[
+{"t":"div","a":{"style":"display:flex;justify-content:flex-end;align-items:center"},"c":[
+{"t":"a","a":{"href":"{{htmlUrl}}","download":"{{downloadName}}","onClick":"{{onSave}}","style":"height:40px;padding:0 16px;border-radius:10px;border:1px solid #D9DBD3;background:#FFFFFF;color:#15171A;font-size:14px;font-weight:600;display:flex;align-items:center"},"c":["HTML로 저장"]}
+]},
+{"t":"section","a":{"class":"hero","style":"background:#FFFFFF;border:1px solid #E1E3DC;border-left:4px solid #2443C4;border-radius:16px;padding:36px;display:flex;gap:40px;align-items:center"},"c":[
+{"t":"div","a":{"style":"flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px"},"c":[
+{"t":"div","a":{"style":"display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-size:14px;color:#4A4F57"},"c":[
+{"t":"span","c":["{{kind}}"]},
+{"t":"span","a":{"style":"width:1px;height:14px;background:#D9DBD3"}},
+{"t":"span","a":{"style":"font-family:'JetBrains Mono',monospace;font-size:13px"},"c":["{{period}}"]}
+]},
+{"t":"h1","a":{"style":"margin:0;font-size:38px;line-height:1.3;letter-spacing:-0.8px"},"c":["{{titleLead}}",{"t":"br"},"{{titleRest}}"]},
+{"t":"div","a":{"style":"display:flex;flex-wrap:wrap;gap:8px"},"c":[
+{"t":"sc-for","a":{"list":"{{techs}}","as":"t","hint-placeholder-count":"3"},"c":[
+{"t":"span","a":{"class":"tc"},"c":[{"t":"b"},"{{t.name}}"]}
+]}
+]},
+{"t":"sc-if","a":{"value":"{{hasGithub}}","hint-placeholder-val":"{{ true }}"},"c":[
+{"t":"a","a":{"href":"{{githubUrl}}","style":"height:44px;padding:0 18px;border-radius:10px;border:1px solid #15171A;color:#15171A;font-weight:600;font-size:14.5px;display:inline-flex;align-items:center"},"c":["GitHub ↗"]}
+]}
+]},
+{"t":"sc-if","a":{"value":"{{hasHero}}","hint-placeholder-val":"{{ false }}"},"c":[
+{"t":"img","a":{"src":"{{heroSrc}}","alt":"{{heroLabel}}","style":"flex:0 1 460px;aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:10px"}}
+]},
+{"t":"sc-if","a":{"value":"{{showHeroText}}","hint-placeholder-val":"{{ true }}"},"c":[
+{"t":"div","a":{"class":"ph","role":"img","aria-label":"{{heroLabel}}","style":"flex:0 1 460px;aspect-ratio:4/3;width:100%"},"c":["{{heroLabel}}"]}
+]}
+]}
+]},
+{"t":"section","c":[
+{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["핵심 흐름"]},{"t":"i"}]},
+{"t":"div","a":{"class":"flow","style":"display:flex;align-items:center;gap:12px;flex-wrap:wrap"},"c":[
+{"t":"sc-for","a":{"list":"{{flow}}","as":"f","hint-placeholder-count":"3"},"c":[
+{"t":"div","a":{"class":"step"},"c":[{"t":"small","c":["{{f.no}}"]},"{{f.label}}"]}
+]}
+]}
+]},
+{"t":"section","c":[
+{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["핵심 설계"]},{"t":"i"}]},
+{"t":"div","a":{"class":"g3","style":"display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px"},"c":[
+{"t":"sc-for","a":{"list":"{{design}}","as":"d","hint-placeholder-count":"2"},"c":[
+{"t":"div","a":{"class":"dc"},"c":[{"t":"h3","c":["{{d.title}}"]},{"t":"p","c":["{{d.description}}"]}]}
+]}
+]}
+]},
+{"t":"section","c":[
+{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["트러블슈팅"]},{"t":"i"}]},
+{"t":"div","a":{"style":"display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;padding:0 0 10px"},"c":[
+{"t":"span","a":{"class":"k"},"c":["문제 상황"]},
+{"t":"span","a":{"class":"k"},"c":["원인 및 해결"]}
+]},
+{"t":"sc-for","a":{"list":"{{troubleshooting}}","as":"t","hint-placeholder-count":"1"},"c":[
+{"t":"div","a":{"class":"tr"},"c":[
+{"t":"p","a":{"style":"margin:0;font-size:15.5px;font-weight:600;line-height:1.6"},"c":["{{t.problem}}"]},
+{"t":"div","a":{"style":"display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.7;color:#3D424A"},"c":[
+{"t":"span","c":["원인 {{t.cause}}"]},
+{"t":"span","c":["해결 {{t.solution}}"]}
+]}
+]}
+]}
+]},
+{"t":"section","c":[
+{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["결과 및 화면"]},{"t":"i"}]},
+{"t":"div","a":{"class":"g2","style":"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 32px"},"c":[
+{"t":"sc-for","a":{"list":"{{screens}}","as":"s","hint-placeholder-count":"1"},"c":[
+{"t":"div","a":{"class":"shot"},"c":[{"t":"div","c":[
+{"t":"sc-if","a":{"value":"{{s.hasImage}}","hint-placeholder-val":"{{ false }}"},"c":[
+{"t":"img","a":{"src":"{{s.src}}","alt":"{{s.label}}","style":"aspect-ratio:16/10;width:100%;object-fit:cover;border-radius:10px"}}
+]},
+{"t":"sc-if","a":{"value":"{{s.showText}}","hint-placeholder-val":"{{ true }}"},"c":[
+{"t":"div","a":{"class":"empty","style":"aspect-ratio:16/10"},"c":["{{s.fileLabel}}"]}
+]},
+{"t":"span","a":{"style":"font-size:14.5px;font-weight:600"},"c":["{{s.label}}"]}
+]}]}
+]}
+]}
+]}
+]}
+]}
+];
+window.__DC_DEFAULTS = {};</script>
+<script>window.__PAGE_DATA = {"id": "githubpagetest", "kind": "[확인 필요]", "period": "[확인 필요]", "title": ["GitHub", "Pages 기반 정적 포트폴리오 화면 배포 프로젝트"], "techs": ["HTML", "JavaScript", "GitHub Actions", "GitHub Pages", "Preact(런타임에서 사용)"], "github_url": "https://github.com/Choi-Sungyun0716/githubpageTest", "hero_image": "images/hero.png", "download_filename": "githubpageTest-portfolio.html", "flow": ["`JOBReady-design/browser/index.html`을 화면 목록 진입점으로 구성", "`DevPfNew1.html` ~ `DevPfNew5.html`로 단계형 포트폴리오 화면 구성 [확인 필요]", "`AuthCallback.html`로 로딩/전환 상태 안내 화면 구성", "`_runtime/dc-lite.js`에서 `sc-if`, `sc-for`, `{{ }}` 치환 및 입력 이벤트 호환 처리 [확인 필요]", "`.github/workflows/pages.yml`로 `JOBReady-design/browser`를 GitHub Pages에 자동 배포", "`JOBReady-design/README.txt`에 브라우저 실행 및 로컬 확인 방법 안내"], "design": [{"title": "아키텍처", "description": "배포 계층은 GitHub Actions → GitHub Pages, 화면 계층은 `JOBReady-design/browser/*.html`, 실행 보조 계층은 `JOBReady-design/browser/_runtime/dc-lite.js`로 구성됩니다. 정적 HTML 파일을 브라우저에서 바로 확인할 수 있고, `dc-lite.js`가 `window.__DC_TREE`와 `window.__DC_COMPONENT`를 바탕으로 조건부 렌더링, 반복 렌더링, 문자열 치환, 입력 이벤트 처리를 담당합니다. 서버 API 중심 구조가 아니라 정적 화면 프리뷰와 검토에 초점을 둔 구조입니다."}, {"title": "기술 선택", "description": "정적 HTML 파일을 개별 화면 단위로 구성해 빌드 없이 바로 열람할 수 있게 했고, GitHub Pages 배포 대상으로 `JOBReady-design/browser` 폴더를 지정해 배포 복잡도를 낮췄습니다. 또한 디자인 캔버스용 최소 실행기인 `_runtime/dc-lite.js`를 두어 조건부 표시, 반복 렌더링, 입력 반응을 브라우저에서 검토할 수 있도록 했습니다. 이 선택은 복잡한 프레임워크보다 화면 검토와 공유가 우선인 목적에 맞춘 것으로 보이며, 다만 해당 목적 판단은 코드와 주석을 바탕으로 한 추정입니다. [확인 필요]"}], "troubleshooting": [{"problem": "화면 파일이 로컬에만 있으면 검토자가 바로 확인하기 어렵고, 공유/배포 절차가 번거롭다", "cause": "정적 산출물이 배포 경로와 분리되어 있으면 접근성이 떨어진다", "solution": "`.github/workflows/pages.yml`을 추가해 `JOBReady-design/browser` 폴더를 GitHub Pages에 배포하도록 구성하고, `index.html`을 진입점으로 설정했다 결과: 저장소의 화면 산출물이 브라우저에서 열 수 있는 사이트 형태로 배포되도록 바뀌었다"}, {"problem": "정적 HTML만으로는 조건부 표시나 반복 렌더링 같은 화면 흐름을 검증하기 어렵다", "cause": "디자인 데이터가 있어도 렌더링/상호작용 실행기가 없으면 실제 흐름을 재현하기 어렵다", "solution": "`_runtime/dc-lite.js`에서 `sc-if`, `sc-for`, `{{ }}` 치환, 입력 이벤트 호환, 상태 변경 시 재렌더링을 구현했다 [확인 필요] 결과: 디자인 캔버스 데이터를 브라우저 화면으로 재현해 링크/버튼/입력 동작을 미리보기할 수 있게 했다"}, {"problem": "단계별 포트폴리오 화면이 제각각이면 사용자가 현재 위치와 흐름을 파악하기 어렵다", "cause": "개별 HTML 파일이 독립적으로 존재하면 스타일과 탐색 규칙이 흔들릴 수 있다", "solution": "`DevPfNew1.html` ~ `DevPfNew5.html`에서 동일한 폰트, 배경, 버튼/탭 스타일과 단계 표시 요소를 맞췄다 [확인 필요] 결과: 단계가 달라도 시각적 규칙이 유지되어 흐름형 포트폴리오로 읽히도록 구성됐다 [확인 필요]"}], "screens": [{"file": "images/screen-1.jpg", "label": "test3"}, {"file": "images/screen-2.webp", "label": "test2"}]};</script>
+<script>
+
+class Component extends DCLogic {
+  constructor(p){ super(p); this.state = { toast: false }; }
+  renderVals() {
+    const page = window.__PAGE_DATA || {
+      kind: "개인 프로젝트",
+      period: "2026.05 – 2026.06",
+      title: ["CineFlow", "영화 예매 관리 시스템"],
+      techs: ["Java 17", "Spring Boot", "JPA", "MySQL"],
+      github_url: "https://github.com",
+      hero_image: "",
+      download_filename: "project-portfolio.html",
+      flow: ["영화 · 상영관 선택", "좌석 선점", "결제 승인"],
+      design: [{ title: "좌석 선점 TTL", description: "결제 전 좌석을 잠시 잡아 둡니다." }],
+      troubleshooting: [{ problem: "같은 좌석이 두 번 예매됨", cause: "조회와 갱신 사이의 경쟁", solution: "비관적 락" }],
+      screens: []
+    };
+    const title = page.title || [];
+    const lead = Array.isArray(title) ? (title[0] || "") : String(title || "");
+    const rest = Array.isArray(title) ? (title[1] || "") : "";
+    const github = page.github_url || "";
+    if (this._url === undefined) {
+      const html = "<!doctype html><meta charset='utf-8'><title>" + lead + "</title><p>" + lead + " " + rest + "</p>";
+      try { this._url = URL.createObjectURL(new Blob([html], { type: "text/html" })); } catch (e) { this._url = "#"; }
+    }
+    function imageAddress(value) {
+      var text = String(value || "");
+      if (/^https?:\/\//i.test(text) || text.indexOf("images/") === 0) return text;
+      return "";
+    }
+    const heroSrc = imageAddress(page.hero_image);
+    const screens = (page.screens || []).map(function (item) {
+      var src = imageAddress(item.file);
+      return {
+        label: item.label || "",
+        fileLabel: item.file || item.label || "이미지 없음",
+        src: src,
+        hasImage: !!src,
+        showText: !src
+      };
+    });
+    return {
+      kind: page.kind || "",
+      period: page.period || "",
+      titleLead: lead,
+      titleRest: rest,
+      techs: (page.techs || []).map(function (name) { return { name: name }; }),
+      hasGithub: !!github,
+      githubUrl: github || "#",
+      heroLabel: page.hero_image || "이미지 없음",
+      heroSrc: heroSrc,
+      hasHero: !!heroSrc,
+      showHeroText: !heroSrc,
+      flow: (page.flow || []).map(function (label, index) {
+        return { no: String(index + 1).padStart(2, "0"), label: label };
+      }),
+      design: page.design || [],
+      troubleshooting: page.troubleshooting || [],
+      screens: screens,
+      downloadName: page.download_filename || "project.html",
+      htmlUrl: this._url,
+      onSave: function () {}
+    };
+  }
+}
+
+window.__DC_COMPONENT = Component;
+window.__dcStart();
+</script>
+</body>
+</html>
