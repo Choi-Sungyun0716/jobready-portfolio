@@ -1,0 +1,214 @@
+{
+  "name": "광운대 지원용",
+  "owner": "Choi-Sungyun0716",
+  "footer": "© 2026 Choi-Sungyun0716",
+  "home": {
+    "headline": [
+      "Spring Boot로 영화 서비스 흐름과 데이터 정합성을 다루는 백엔드 개발자",
+      "TMDB API와 로컬 데이터를 조합해 콘텐츠와 결제 상태를 함께 설계하는 개발자"
+    ],
+    "summary": [
+      "홈 화면에서 TMDB 영화 데이터와 로컬 데이터를 조합해 섹션별 콘텐츠를 구성했습니다.",
+      "상영관 회차 연결, 좌석 변경 제한, 결제 성공·취소 상태 검증, 라우팅 정리를 통해 백엔드 흐름을 정리했습니다."
+    ],
+    "stats": [
+      {
+        "label": "프로젝트",
+        "value": 1
+      },
+      {
+        "label": "수상 경험",
+        "value": 1
+      },
+      {
+        "label": "활동",
+        "value": 1
+      }
+    ],
+    "photo_text": "C",
+    "photo": "images/photo.jpg",
+    "photos": [],
+    "location": "서울/성동구",
+    "position": "백엔드"
+  },
+  "about": {
+    "title": "사용 기술 및 경험",
+    "description": "이 포트폴리오에 입력한 기술과 경험입니다.",
+    "groups": [
+      {
+        "name": "기술 스택",
+        "description": "내정보에 있는 기술입니다.",
+        "rows": [
+          {
+            "name": "Jupyter Notebook",
+            "experience": "langGraph"
+          },
+          {
+            "name": "HTML",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "Python",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "TypeScript",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "CSS",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "Java",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "JavaScript",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "Blade",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "PHP",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "Dockerfile",
+            "experience": "[확인 필요]"
+          },
+          {
+            "name": "Batchfile",
+            "experience": "[확인 필요]"
+          }
+        ]
+      }
+    ],
+    "main_tech": [
+      {
+        "name": "Jupyter Notebook",
+        "color": "#2443C4"
+      },
+      {
+        "name": "HTML",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Python",
+        "color": "#2443C4"
+      },
+      {
+        "name": "TypeScript",
+        "color": "#2443C4"
+      },
+      {
+        "name": "CSS",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Java",
+        "color": "#2443C4"
+      },
+      {
+        "name": "JavaScript",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Blade",
+        "color": "#2443C4"
+      },
+      {
+        "name": "PHP",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Dockerfile",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Batchfile",
+        "color": "#2443C4"
+      }
+    ],
+    "awards": [
+      {
+        "date": "2026.5",
+        "name": "ㅇㄹㅇㄹ"
+      }
+    ]
+  },
+  "history": {
+    "title": "이력 및 활동",
+    "description": "학력은 내정보이고, 활동과 자격은 입력한 내용입니다.",
+    "activities_title": "활동 및 경험",
+    "activities_description": "입력한 활동입니다.",
+    "activities": [
+      {
+        "period": "2026.02 - 2026.11",
+        "name": "졸업작품",
+        "role": "",
+        "items": [
+          "ai서버 개발"
+        ]
+      }
+    ],
+    "education": {
+      "major": "",
+      "school": "광운대학교 · 대학교(4년)",
+      "period": "2022-03-01 – 2026-11-01"
+    },
+    "certificates": [
+      {
+        "name": "정처기",
+        "org": "몰라",
+        "date": "2026.5"
+      },
+      {
+        "name": "ㅁㄴㅇㄹ",
+        "org": "ㅁㄴㅇㄹ",
+        "date": "2026.5"
+      },
+      {
+        "name": "ㅇㄹㅇㄹ",
+        "org": "ㅇㄹ",
+        "date": "2026.5"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "cineflow-spring-boot",
+      "detail_page": "1/PortfolioDetail.html",
+      "github_url": "https://github.com/Choi-Sungyun0716/cineflow-spring-boot",
+      "language": "Java",
+      "language_color": "#2443C4",
+      "cover_bg": "#1F2430",
+      "cover_ink": "#F4F5F2",
+      "main_tech": "Java",
+      "period": "2026.02 – 2026.11",
+      "title": "CineFlow Spring Boot",
+      "stack": "Java · Spring Boot · Spring MVC · Spring Web RestClient · Thymeleaf [추정] · JPA [확인 필요] · Lombok · Transactional · REST API · TMDB API",
+      "summary": [
+        "외부 TMDB 데이터가 비어도 로컬 데이터로 대체해 홈 화면이 비지 않도록 fallback 구조를 구현했습니다.",
+        "회차가 연결된 상영관의 핵심 속성 변경을 막아 예매 데이터 정합성을 서비스 계층에서 지켰습니다.",
+        "결제와 취소를 상태 검증 기반으로 처리해 잘못된 상태 전이를 방지했습니다."
+      ],
+      "cover_image": "1/images/hero.png"
+    }
+  ],
+  "troubleshooting": [],
+  "contact": {
+    "title": "연락처",
+    "description": "채용 문의나 협업 제안은 이메일로 보내주세요.",
+    "email": "",
+    "links": [
+      {
+        "label": "GITHUB",
+        "value": "github.com/Choi-Sungyun0716",
+        "url": "https://github.com/Choi-Sungyun0716"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "cineflow-spring-boot",
+  "kind": "개인 프로젝트",
+  "period": "2026.02 – 2026.11",
+  "title": [
+    "CineFlow",
+    "Spring Boot"
+  ],
+  "summary": [
+    "외부 TMDB 데이터가 비어도 로컬 데이터로 대체해 홈 화면이 비지 않도록 fallback 구조를 구현했습니다.",
+    "회차가 연결된 상영관의 핵심 속성 변경을 막아 예매 데이터 정합성을 서비스 계층에서 지켰습니다.",
+    "결제와 취소를 상태 검증 기반으로 처리해 잘못된 상태 전이를 방지했습니다."
+  ],
+  "techs": [
+    "Java",
+    "Spring Boot",
+    "Spring MVC",
+    "Spring Web RestClient",
+    "Thymeleaf [추정]",
+    "JPA [확인 필요]",
+    "Lombok",
+    "Transactional",
+    "REST API",
+    "TMDB API"
+  ],
+  "github_url": "https://github.com/Choi-Sungyun0716/cineflow-spring-boot",
+  "hero_image": "images/hero.png",
+  "download_filename": "cineflow-spring-boot-portfolio.html",
+  "flow": [
+    "홈 화면에서 TMDB 영화 데이터와 로컬 데이터를 조합해 섹션별 콘텐츠를 구성합니다.",
+    "영화 목록과 상세 화면에서 관련 영화, 극장, 회차, 다음 회차 정보를 함께 제공합니다. [확인 필요]",
+    "상영관의 회차 연결 여부에 따라 극장 변경과 좌석 수 변경을 제한해 데이터 정합성을 지킵니다.",
+    "결제 성공과 취소를 상태 검증 기반으로 처리하고, 거래 ID와 취소 거래 ID를 기록합니다.",
+    "레거시 HTML 경로를 새 라우팅으로 리다이렉트하거나 404로 정리해 기존 자산을 점진적으로 정리합니다. [확인 필요]"
+  ],
+  "design": [
+    {
+      "title": "아키텍처",
+      "description": "Spring Boot 기반의 계층형 MVC 아키텍처입니다. Controller가 요청을 받고 Service가 도메인 로직과 검증을 담당하며, Repository가 데이터 접근을 처리합니다. HomeController에서는 TMDB 외부 API 결과가 비어 있을 때 로컬 데이터로 대체하는 fallback 구조를 사용하고, 영화 상세 화면은 관련 영화·극장·상영관·회차 정보를 묶어 예매 진입 허브 역할을 하도록 구성했습니다. [확인 필요]"
+    },
+    {
+      "title": "기술 선택",
+      "description": "서버 렌더링 MVC 구조를 선택해 초기 화면 구성과 데이터 전달을 단순화했고, 외부 API 주소는 설정값으로 분리해 환경별 유연성을 확보했습니다. 읽기 작업에는 readOnly 트랜잭션을 적용하고, 쓰기 작업만 별도 트랜잭션으로 관리해 의도를 명확히 했습니다. 또한 상영관 비활성화는 물리 삭제 대신 active=false로 처리해 운영 데이터를 보존하는 방향을 택했습니다. 이러한 선택들은 확인 가능한 코드 기준으로 운영 안정성과 정합성을 우선한 설계로 보입니다. [확인 필요]"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "problem": "TMDB 외부 API 응답이 비어 있으면 홈 화면의 주요 섹션이 공백이 될 수 있었습니다.",
+      "cause": "외부 영화 데이터에 대한 의존도가 높았고, 응답이 없을 때 대체 경로가 없었습니다.",
+      "solution": "HomeController의 withLocalFallback(...)로 TMDB 결과가 null이거나 비어 있을 때 로컬 데이터를 대신 사용하도록 했습니다. 결과: 외부 API가 불안정해도 홈 화면 콘텐츠를 유지할 수 있게 되었습니다. [확인 필요]"
+    },
+    {
+      "problem": "이미 회차가 연결된 상영관의 극장 정보나 좌석 수를 수정하면 예매와 좌석 데이터 정합성이 깨질 수 있었습니다.",
+      "cause": "상영관 정보가 회차 데이터와 강하게 연결되어 있는데도 변경을 허용하면 참조 관계가 무너질 수 있었습니다.",
+      "solution": "ScreenService.updateScreen(...)에서 scheduleRepository.existsByScreenId(...)로 회차 존재 여부를 확인한 뒤, 조건에 따라 변경을 차단했습니다. 결과: 운영 중인 상영관의 핵심 속성을 안전하게 보호할 수 있게 되었습니다. [확인 필요]"
+    },
+    {
+      "problem": "결제 취소가 상태 검증 없이 처리되면 이미 취소된 결제나 결제 완료가 아닌 건에 대해 잘못된 전이가 발생할 수 있었습니다.",
+      "cause": "결제 도메인은 상태 전이가 중요한데, 검증 없이 업데이트하면 무결성이 깨질 수 있었습니다.",
+      "solution": "PaymentService에서 결제 정보 존재 여부, 이미 취소된 상태 여부, PAID 상태 여부를 순차적으로 확인한 뒤에만 취소 처리하도록 했습니다. 결과: 중복 취소와 잘못된 상태 전이를 방지할 수 있었습니다."
+    }
+  ],
+  "screens": []
+}
