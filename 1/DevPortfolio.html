@@ -3,247 +3,336 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>개발자 포트폴리오 · 완성 화면</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<title>개발자 포트폴리오</title>
+<!-- 글꼴 Pretendard 1.3.9 (프론트와 같음) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- 색 · 글자 · 간격은 JOBReady 프론트(원티드 몽타주 + 합격 그린, PRD 10.2)와 같은 값 -->
 <style>
-body{margin:0;background:#F4F5F2}
-a{color:#2443C4;text-decoration:none}a:hover{color:#16308F}
-.gnb a.m{color:#4A4F57;padding:10px 14px;border-radius:8px;font-weight:500}
-.gnb a.m:hover{background:#ECEDE8;color:#15171A}
-.gnb a.on{color:#15171A;font-weight:700;background:#ECEDE8}
-.nv button{height:60px;padding:0 2px;border:0;border-bottom:2px solid transparent;background:transparent;font:inherit;font-size:15px;font-weight:500;color:#4A4F57;cursor:pointer;white-space:nowrap}
-.nv button:hover{color:#15171A}
-.nv button.on{color:#2443C4;font-weight:700;border-bottom-color:#2443C4}
-.hb{height:40px;padding:0 16px;border:1px solid #D9DBD3;border-radius:9px;background:#FFFFFF;color:#15171A;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.hb:hover{border-color:#15171A;color:#15171A}
-.hb.p{background:#2443C4;border-color:#2443C4;color:#FFFFFF}.hb.p:hover{background:#1B37A8;color:#FFFFFF}
-.sec{max-width:1200px;margin:0 auto;padding:96px 40px 24px;box-sizing:border-box;scroll-margin-top:64px}
-.sh{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin-bottom:48px}
-.sh h2{margin:0;font-size:40px;font-weight:300;letter-spacing:-1px}
-.sh i{display:block;width:120px;height:2px;background:linear-gradient(90deg,#D9DBD3 0 30%,#2443C4 30% 70%,#D9DBD3 70%)}
-.sh p{margin:0;font-size:15.5px;color:#4A4F57}
-.card{background:#FFFFFF;border:1px solid #E1E3DC;border-radius:16px}
-.mono{font-family:'JetBrains Mono',monospace}
-.stat{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 28px;border-left:1px solid #E1E3DC}
-.stat:first-child{border-left:0;padding-left:0}
-.stat b{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:600;color:#2443C4}
-.stat span{font-size:14px;color:#4A4F57}
-.float{position:absolute;display:flex;align-items:center;gap:10px;padding:14px 18px;background:#FFFFFF;border:1px solid #E1E3DC;border-radius:12px;box-shadow:0 12px 30px rgba(21,23,26,.10);font-size:14.5px;font-weight:600;white-space:nowrap}
-.trow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:baseline;padding:16px 0;border-top:1px solid #EEEFEA}
-.trow b{font-weight:500;font-size:16px}
-.trow span{text-align:right;font-size:14px;font-weight:600;color:#2443C4}
-.tech{display:flex;align-items:center;gap:10px;height:56px;padding:0 16px;border:1px solid #E1E3DC;border-radius:10px;background:#FFFFFF;font-size:14.5px;font-weight:500}
-.tech i{width:10px;height:10px;border-radius:99px;flex:none}
-.aw{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid #EEEFEA;font-size:14.5px}
-.tl{position:relative;padding-left:28px;display:flex;flex-direction:column;gap:16px}
-.tl:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:#D9DBD3}
-.tli{position:relative}
-.tli:before{content:"";position:absolute;left:-26px;top:22px;width:12px;height:12px;border-radius:99px;background:#FFFFFF;border:3px solid #2443C4;box-sizing:border-box}
-.bl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14.5px;color:#3D424A}
-.bl li:before{content:"- ";color:#2443C4}
-.ft{height:40px;padding:0 4px;border:0;border-bottom:2px solid transparent;background:transparent;font:inherit;font-size:16px;color:#6B7079;cursor:pointer}
-.ft.on{color:#15171A;font-weight:600;border-bottom-color:#2443C4}
-.thumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;width:100%}
-.deft{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:28px}
-.btn{height:50px;padding:0 28px;border-radius:999px;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;box-sizing:border-box}
-.btn.p{background:#2443C4;color:#FFFFFF}.btn.p:hover{background:#1B37A8;color:#FFFFFF}
-.btn.o{border:1px solid #D9DBD3;background:#FFFFFF;color:#15171A}.btn.o:hover{border-color:#15171A;color:#15171A}
-.sum{min-width:0}
-.sum li{white-space:normal;overflow:visible;line-height:1.6;word-break:break-word}
-.ts{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid #EEEFEA;font-size:15px}
-.ts b{color:#2443C4;font-size:14px}
-.cb{height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;box-sizing:border-box}
-.sub a{height:52px;display:inline-flex;align-items:center;border-bottom:2px solid transparent;color:#4A4F57;font-size:15px;font-weight:500;box-sizing:border-box}
-.sub a:hover{color:#15171A}
-.sub a.on{color:#15171A;font-weight:700;border-bottom-color:#15171A}
-.hb.g{border-color:#B9C3EC;color:#1E3AA8}
-</style>
-<style>
-.dc-home{position:fixed;left:12px;bottom:12px;z-index:9999;height:30px;padding:0 12px;border-radius:999px;background:rgba(21,23,26,.72);color:#FFFFFF !important;font:600 12px/30px system-ui,sans-serif;text-decoration:none;opacity:.55}
-.dc-home:hover{opacity:1}
+:root{
+  --ink-body:oklch(0.259 0.01 273);--ink-label:oklch(0.298 0.01 273);--line:oklch(0.521 0.018 273);
+  --background:oklch(0.972 0.002 286);--card:oklch(1 0 0);
+  --foreground:color-mix(in oklab,var(--ink-body) 88%,white);
+  --foreground-strong:oklch(0.148 0.004 277);
+  --muted-foreground:color-mix(in oklab,var(--ink-label) 61%,white);
+  --foreground-subtle:color-mix(in oklab,var(--ink-label) 43%,white);
+  --foreground-disabled:color-mix(in oklab,var(--ink-label) 28%,white);
+  --muted:oklch(0.961 0.002 286);
+  --fill:color-mix(in oklab,var(--line) 10%,transparent);
+  --border:color-mix(in oklab,var(--line) 8%,transparent);
+  --border-outline:color-mix(in oklab,var(--line) 16%,transparent);
+  --border-strong:color-mix(in oklab,var(--line) 35%,transparent);
+  /* 합격 그린 (PRD 10.2) */
+  --primary:oklch(0.47 0.1 163);--primary-foreground:oklch(1 0 0);
+  --highlight:oklch(0.955 0.035 163);--highlight-foreground:oklch(0.4 0.09 163);
+  --highlight-weak:oklch(0.985 0.012 163);
+  --interaction-hover:oklch(0.205 0.004 286 / 0.075);--interaction-active:oklch(0.205 0.004 286 / 0.18);
+  --overlay:oklch(0 0 0);
+  --shadow-raise:0 1px 2px oklch(0.155 0 0 / 0.06),0 1px 3px oklch(0 0 0 / 0.05);
+  --font-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:16px;line-height:1.5;letter-spacing:.0057em;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{display:block}
+button{font:inherit;letter-spacing:inherit}
+/* 몽타주 타입 스케일 (프론트 app.css @theme) */
+.t-caption1{font-size:12px;line-height:1.334;letter-spacing:.0252em}
+.t-label2{font-size:13px;line-height:1.385;letter-spacing:.0194em}
+.t-label1{font-size:14px;line-height:1.429;letter-spacing:.0145em}
+.t-body2{font-size:15px;line-height:1.467;letter-spacing:.0096em}
+.t-headline1{font-size:18px;line-height:1.445;letter-spacing:-.002em}
+.t-heading2{font-size:20px;line-height:1.4;letter-spacing:-.012em}
+.t-title3{font-size:24px;line-height:1.334;letter-spacing:-.023em}
+.c-strong{color:var(--foreground-strong)}.c-muted{color:var(--muted-foreground)}.c-subtle{color:var(--foreground-subtle)}
+.c-primary{color:var(--primary)}
+.w5{font-weight:500}.w6{font-weight:600}.w7{font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--font-mono)}
+.pre{white-space:pre-line}
+.trunc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding:40px 24px 96px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px}
+/* 섹션 머리: 제목 + 헤어라인, 선 앞쪽에 primary 짧은 선 (프론트 SectionHead · TemplateSection) */
+.sh{display:flex;align-items:center;gap:16px}
+.sh h2{flex:none;font-weight:700;color:var(--foreground-strong)}
+.sh i{position:relative;flex:1;height:1px;background:var(--border)}
+.sh i::before{content:"";position:absolute;left:0;top:-1px;height:2px;border-radius:999px;background:var(--primary)}
+/* 몽타주 button: 굵기 700, solid는 hover 때 인터랙션 층 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;height:40px;padding:0 20px;border:1px solid transparent;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:.006em;white-space:nowrap;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-p{background:var(--primary);color:var(--primary-foreground)}
+.btn-p:hover{background-image:linear-gradient(var(--interaction-hover),var(--interaction-hover))}
+.btn-p:active{background-image:linear-gradient(var(--interaction-active),var(--interaction-active))}
+.btn-o{border-color:var(--border-outline);background:var(--card);color:var(--foreground)}
+.btn-o:hover{background:var(--muted)}
+.btn-sm{height:32px;padding:0 14px;border-radius:8px;font-size:14px}
+.btn-sm svg{width:14px;height:14px}
+.btn-lg{height:44px}
+.btn:disabled{cursor:default;background:var(--fill);color:var(--foreground-disabled);background-image:none}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklch,var(--primary) 30%,transparent)}
+/* 몽타주 chip brand 34px */
+.chip{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;background:var(--highlight);color:var(--highlight-foreground);font-size:13px;font-weight:600;letter-spacing:.0194em}
+/* 확대 보기 */
+.zoom{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:32px;background:color-mix(in oklch,var(--overlay) 86%,transparent);cursor:zoom-out}
+.zoom img{max-width:min(1100px,100%);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px}
+.zoom button{position:absolute;top:20px;right:20px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:999px;background:color-mix(in oklch,white 10%,transparent);color:#fff;cursor:pointer}
+.zoom button:hover{background:color-mix(in oklch,white 20%,transparent)}
+.zoom button svg{width:20px;height:20px}
+
+/* 섹션 메뉴: 위에 붙는 흰 바 + 고른 메뉴 = chip brand (프론트 SectionNav) */
+.nav{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);background:color-mix(in oklch,var(--card) 95%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nav-in{max-width:1280px;margin:0 auto;padding:12px 24px;display:flex;gap:4px;overflow-x:auto}
+.nav button{flex:none;height:34px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--muted-foreground);font-size:13px;font-weight:500;cursor:pointer;transition:background-color .15s,color .15s}
+.nav button:hover{background:var(--muted);color:var(--foreground)}
+.nav button.on{background:var(--highlight);color:var(--highlight-foreground);font-weight:600}
+.article{display:flex;flex-direction:column;gap:96px}
+.sec{display:flex;flex-direction:column;gap:32px;scroll-margin-top:80px}
+.head{display:flex;flex-direction:column;gap:8px}
+.sh h2{font-size:24px;line-height:1.334;letter-spacing:-.023em}
+.sh i::before{width:48px}
+/* 홈 */
+.home{display:grid;grid-template-columns:minmax(0,1fr) 280px;align-items:center;gap:48px}
+.home-l{display:flex;flex-direction:column;gap:24px}
+.home h1{display:flex;flex-direction:column;gap:4px;font-size:36px;line-height:1.25;font-weight:700;color:var(--foreground-strong);letter-spacing:-.025em}
+.home .lead{display:flex;flex-direction:column;gap:4px;font-size:18px;line-height:1.625}
+.stats{display:flex;gap:40px}
+.stats div{display:flex;flex-direction:column-reverse;gap:4px}
+.stats dd{font-size:30px;line-height:1.2;font-weight:700;color:var(--primary);font-variant-numeric:tabular-nums}
+.home-r{display:flex;flex-direction:column;align-items:center;gap:16px}
+.avatar{position:relative;display:flex;align-items:center;justify-content:center;width:100%;max-width:256px;aspect-ratio:1;overflow:hidden;border-radius:999px;background:var(--highlight);color:var(--highlight-foreground);font-size:60px;font-weight:700}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.who{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;text-align:center}
+.who span{display:flex;align-items:center;justify-content:center;gap:6px}
+.who svg{width:16px;height:16px;flex:none;color:var(--primary)}
+.who i{width:8px;height:8px;flex:none;border-radius:999px;background:var(--primary)}
+/* 소개 */
+.about{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px}
+.col{display:flex;flex-direction:column}
+.group{display:flex;flex-direction:column;gap:12px}
+.rows li{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--border)}
+.techs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.techs li{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:var(--card)}
+.techs i{width:8px;height:8px;flex:none;border-radius:999px;background:var(--primary)}
+.awards li{display:flex;align-items:center;gap:12px}
+.awards .date{width:96px;flex:none}
+/* 이력 및 활동 */
+.history{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px}
+.tl{margin-left:6px;border-left:1px solid var(--border)}
+.tl>li{position:relative;display:flex;flex-direction:column;gap:4px;padding:0 0 24px 24px}
+.tl>li::before{content:"";position:absolute;top:4px;left:-6px;width:12px;height:12px;border:3px solid var(--primary);border-radius:999px;background:var(--card)}
+.bul{margin-top:4px;padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:4px}
+.bul li::marker{color:var(--primary)}
+.edu{display:flex;flex-direction:column;gap:8px;padding:20px;border-top:3px solid var(--primary);border-radius:12px}
+.certs li{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-top:1px solid var(--border)}
+.certs svg{width:20px;height:20px;flex:none;margin-top:2px;color:var(--primary)}
+/* 프로젝트 */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{height:34px;padding:0 14px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--muted-foreground);font-size:13px;font-weight:500;cursor:pointer;transition:border-color .15s,color .15s}
+.filters button:hover{border-color:var(--border-strong);color:var(--foreground)}
+.filters button.on{border-color:transparent;background:var(--highlight);color:var(--highlight-foreground);font-weight:600}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pcard{display:flex;flex-direction:column;overflow:hidden}
+.cover{position:relative;aspect-ratio:16/9}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* 자동 썸네일: 레포명(모노) + 주 언어, 연한 브랜드 바탕 (프론트 AutoThumbnail) */
+.auto{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:24px;background:var(--highlight-weak)}
+.auto .repo{font-size:24px;font-weight:600}
+.auto .lang{display:flex;align-items:center;gap:8px}
+.auto i{width:10px;height:10px;border-radius:999px;background:var(--primary)}
+.pbody{display:flex;flex:1;flex-direction:column;gap:12px;padding:24px}
+.prow{display:flex;justify-content:space-between;gap:12px}
+.sum{display:flex;flex-direction:column;gap:4px;height:96px;overflow:hidden}
+.sum li{display:flex;gap:8px;min-width:0}
+.sum li b{flex:none;font-weight:400;color:var(--primary)}
+.pbtn{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.pbtn .btn{flex:1}
+/* 트러블슈팅 */
+.tcard{display:flex;flex-direction:column;gap:12px;padding:24px}
+.tag{padding:2px 8px;border-radius:6px;background:var(--highlight);color:var(--highlight-foreground)}
+.tdl{display:flex;flex-direction:column;gap:8px}
+.tdl div{display:grid;grid-template-columns:3rem minmax(0,1fr);align-items:start;gap:8px}
+.tdl dt{font-weight:700;color:var(--primary)}
+.empty-box{padding:40px;border:1px dashed var(--border-strong);border-radius:12px;background:var(--card);text-align:center}
+/* 연락처 */
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.links li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
+.links .k{width:112px;flex:none}
+.mail{display:flex;flex-direction:column;gap:16px;padding:24px;border-top:3px solid var(--primary)}
+.mail .acts{display:flex;flex-wrap:wrap;gap:8px}
+.foot{margin-top:96px;padding-top:24px;border-top:1px solid var(--border);text-align:center}
+@media (max-width:860px){
+  .wrap{padding:24px 16px 64px}
+  .home,.about,.history,.contact,.g2{grid-template-columns:minmax(0,1fr)}
+  .home-r{order:-1}.avatar{max-width:180px}
+  .home h1{font-size:28px}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .article{gap:72px}
+}
 </style>
 <script src="./_runtime/preact.min.js"></script>
 <script src="./_runtime/dc-lite.js"></script>
 </head>
 <body>
 <div id="dc-root"></div>
-<script>window.__DC_TREE = [{"t": "div", "a": {"style": "min-height: 100vh; font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #15171A; background: #F4F5F2"}, "c": [{"t": "sc-if", "a": {"value": "{{sHome}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "home", "class": "sec", "style": "padding-top: 88px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr); gap: 48px; align-items: center"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 28px"}, "c": [{"t": "h1", "a": {"style": "margin: 0; font-size: 48px; font-weight: 300; line-height: 1.3; letter-spacing: -1.5px"}, "c": ["{{headlineLead}}", {"t": "br", "a": {}}, {"t": "span", "a": {"style": "display: inline-block; color: #2443C4; font-weight: 500; padding-bottom: 8px; border-bottom: 2px solid #2443C4"}, "c": ["{{headlineAccent}}"]}]}, {"t": "p", "a": {"style": "margin: 0; font-size: 18px; line-height: 1.8; color: #4A4F57"}, "c": ["{{summaryLine1}}", {"t": "br", "a": {}}, "{{summaryLine2}}"]}, {"t": "div", "a": {"style": "display: flex; margin-top: 12px"}, "c": [{"t": "div", "a": {"class": "stat"}, "c": [{"t": "b", "c": ["{{statProjects}}"], "a": {}}, {"t": "span", "c": ["프로젝트"], "a": {}}]}, {"t": "div", "a": {"class": "stat"}, "c": [{"t": "b", "c": ["{{statAwards}}"], "a": {}}, {"t": "span", "c": ["수상 경험"], "a": {}}]}, {"t": "div", "a": {"class": "stat"}, "c": [{"t": "b", "c": ["{{statActivities}}"], "a": {}}, {"t": "span", "c": ["활동"], "a": {}}]}]}]}, {"t": "div", "a": {"style": "display: flex; flex-direction: column; align-items: center; gap: 16px"}, "c": [{"t": "div", "a": {"style": "position: relative; width: 380px; padding: 0 40px"}, "c": [{"t": "div", "a": {"role": "img", "aria-label": "프로필 사진", "style": "position: relative; aspect-ratio: 4 / 5; border-radius: 20px; background: #E3E9FF; display: flex; align-items: center; justify-content: center; font-size: 120px; font-weight: 600; color: #8FA6FF; overflow: hidden"}, "c": [{"t": "sc-if", "a": {"value": "{{hasPhoto}}", "hint-placeholder-val": "{{ false }}"}, "c": [{"t": "img", "a": {"src": "{{photoSrc}}", "alt": "프로필 사진", "style": "position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"}}]}, {"t": "sc-if", "a": {"value": "{{showPhotoText}}", "hint-placeholder-val": "{{ true }}"}, "c": ["{{photoText}}"]}]}, {"t": "sc-if", "a": {"value": "{{hasGallery}}", "hint-placeholder-val": "{{ false }}"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px"}, "c": [{"t": "sc-for", "a": {"list": "{{gallery}}", "as": "g"}, "c": [{"t": "img", "a": {"src": "{{g.src}}", "alt": "{{g.label}}", "style": "width: 72px; height: 72px; object-fit: cover; border-radius: 8px"}}]}]}]}]}, {"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #3D424A; margin-top: 8px"}, "c": [{"t": "span", "a": {"style": "display: flex; align-items: center; gap: 8px"}, "c": [{"t": "svg", "a": {"width": "16", "height": "16", "viewBox": "0 0 24 24", "fill": "none", "stroke": "#2443C4", "stroke-width": "2", "aria-hidden": "true"}, "c": [{"t": "path", "a": {"d": "M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"}}, {"t": "circle", "a": {"cx": "12", "cy": "9.5", "r": "2.5"}}]}, "{{location}}"]}, {"t": "span", "a": {"style": "display: flex; align-items: center; gap: 8px"}, "c": [{"t": "i", "a": {"style": "width: 8px; height: 8px; margin: 0 4px; border-radius: 99px; background: #2443C4"}}, "{{position}}"]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{sAbout}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "about", "class": "sec"}, "c": [{"t": "div", "a": {"class": "sh"}, "c": [{"t": "h2", "c": ["{{aboutTitle}}"], "a": {}}, {"t": "i", "a": {}}, {"t": "p", "c": ["{{aboutDescription}}"], "a": {}}]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 48px; align-items: start"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 40px"}, "c": [{"t": "sc-for", "a": {"list": "{{groups}}", "as": "g", "hint-placeholder-count": "3"}, "c": [{"t": "div", "c": [{"t": "h3", "a": {"style": "margin: 0; font-size: 24px; font-weight: 500"}, "c": ["{{g.name}}"]}, {"t": "p", "a": {"style": "margin: 6px 0 16px; font-size: 14.5px; color: #6B7079"}, "c": ["{{g.desc}}"]}, {"t": "sc-for", "a": {"list": "{{g.rows}}", "as": "r", "hint-placeholder-count": "2"}, "c": [{"t": "div", "a": {"class": "trow"}, "c": [{"t": "b", "c": ["{{r.t}}"], "a": {}}, {"t": "span", "c": ["{{r.e}}"], "a": {}}]}]}], "a": {}}]}]}, {"t": "aside", "a": {"style": "display: flex; flex-direction: column; gap: 32px"}, "c": [{"t": "div", "c": [{"t": "h3", "a": {"style": "margin: 0 0 16px; font-size: 18px; font-weight: 600"}, "c": ["주요 기술"]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px"}, "c": [{"t": "sc-for", "a": {"list": "{{mainTech}}", "as": "t", "hint-placeholder-count": "6"}, "c": [{"t": "div", "a": {"class": "tech"}, "c": [{"t": "i", "a": {"style": "background: {{t.c}}"}}, "{{t.n}}"]}]}]}], "a": {}}, {"t": "div", "c": [{"t": "h3", "a": {"style": "margin: 0 0 8px; font-size: 18px; font-weight: 600"}, "c": ["최근 성과"]}, {"t": "sc-for", "a": {"list": "{{awards}}", "as": "a", "hint-placeholder-count": "2"}, "c": [{"t": "div", "a": {"class": "aw"}, "c": [{"t": "span", "a": {"class": "mono", "style": "font-size: 13px; font-weight: 600; color: #2443C4"}, "c": ["{{a.date}}"]}, {"t": "span", "c": ["{{a.name}}"], "a": {}}]}]}], "a": {}}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{sHistory}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "history", "class": "sec"}, "c": [{"t": "div", "a": {"class": "sh"}, "c": [{"t": "h2", "c": ["{{historyTitle}}"], "a": {}}, {"t": "i", "a": {}}, {"t": "p", "c": ["{{historyDescription}}"], "a": {}}]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: start"}, "c": [{"t": "div", "a": {"class": "card", "style": "padding: 36px; display: flex; flex-direction: column; gap: 20px"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 8px"}, "c": [{"t": "h3", "a": {"style": "margin: 0; font-size: 26px; font-weight: 500"}, "c": ["{{activitiesTitle}}"]}, {"t": "p", "a": {"style": "margin: 0; font-size: 15px; color: #4A4F57"}, "c": ["{{activitiesDescription}}"]}]}, {"t": "div", "a": {"class": "tl"}, "c": [{"t": "sc-for", "a": {"list": "{{acts}}", "as": "a", "hint-placeholder-count": "3"}, "c": [{"t": "div", "a": {"class": "tli card", "style": "padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; background: #FAFAF8"}, "c": [{"t": "span", "a": {"class": "mono", "style": "font-size: 13.5px; font-weight: 600; color: #2443C4"}, "c": ["{{a.period}}"]}, {"t": "b", "a": {"style": "font-size: 18px; font-weight: 600"}, "c": ["{{a.name}}"]}, {"t": "span", "a": {"style": "font-size: 14.5px; color: #4A4F57"}, "c": ["{{a.role}}"]}, {"t": "ul", "a": {"class": "bl", "style": "margin-top: 8px"}, "c": [{"t": "sc-for", "a": {"list": "{{a.items}}", "as": "it", "hint-placeholder-count": "2"}, "c": [{"t": "li", "c": ["{{it}}"], "a": {}}]}]}]}]}]}]}, {"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 20px"}, "c": [{"t": "div", "a": {"class": "card", "style": "padding: 36px; display: flex; flex-direction: column; gap: 20px"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 8px"}, "c": [{"t": "h3", "a": {"style": "margin: 0; font-size: 26px; font-weight: 500"}, "c": ["학력 및 자격"]}, {"t": "p", "a": {"style": "margin: 0; font-size: 15px; color: #4A4F57"}, "c": ["학력과 자격, 수상 이력"]}]}, {"t": "div", "a": {"style": "padding: 24px; border: 1px solid #E1E3DC; border-top: 3px solid #2443C4; border-radius: 12px; display: flex; flex-direction: column; gap: 6px"}, "c": [{"t": "b", "a": {"style": "font-size: 19px; font-weight: 600"}, "c": ["{{eduMajor}}"]}, {"t": "span", "a": {"style": "font-size: 15px; color: #4A4F57"}, "c": ["{{eduSchool}}"]}, {"t": "span", "a": {"class": "mono", "style": "font-size: 14px; font-weight: 600; color: #2443C4; margin-top: 4px"}, "c": ["{{eduPeriod}}"]}]}]}, {"t": "div", "a": {"class": "card", "style": "padding: 32px 36px"}, "c": [{"t": "h3", "a": {"style": "margin: 0 0 8px; font-size: 20px; font-weight: 600"}, "c": ["자격증 및 수상"]}, {"t": "sc-for", "a": {"list": "{{certs}}", "as": "c", "hint-placeholder-count": "3"}, "c": [{"t": "div", "a": {"style": "display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #EEEFEA"}, "c": [{"t": "svg", "a": {"width": "20", "height": "20", "viewBox": "0 0 24 24", "fill": "none", "stroke": "#2443C4", "stroke-width": "2", "stroke-linecap": "round", "aria-hidden": "true", "style": "margin-top: 2px; flex: none"}, "c": [{"t": "circle", "a": {"cx": "12", "cy": "12", "r": "9"}}, {"t": "path", "a": {"d": "M8 12l3 3 5-6"}}]}, {"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 4px"}, "c": [{"t": "b", "a": {"style": "font-size: 16px; font-weight: 600"}, "c": ["{{c.name}}"]}, {"t": "span", "a": {"style": "font-size: 14px; color: #6B7079"}, "c": ["{{c.org}} · {{c.date}}"]}]}]}]}]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{sProjects}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "projects", "class": "sec"}, "c": [{"t": "div", "a": {"class": "sh"}, "c": [{"t": "h2", "c": ["프로젝트"], "a": {}}, {"t": "i", "a": {}}, {"t": "p", "c": ["직접 만든 프로젝트와 GitHub 근거 정리"], "a": {}}]}, {"t": "div", "a": {"role": "tablist", "aria-label": "기술별 보기", "style": "display: flex; justify-content: center; gap: 36px; margin-bottom: 40px"}, "c": [{"t": "sc-for", "a": {"list": "{{filters}}", "as": "f", "hint-placeholder-count": "3"}, "c": [{"t": "button", "a": {"class": "{{f.cls}}", "role": "tab", "aria-selected": "{{f.sel}}", "onClick": "{{f.pick}}"}, "c": ["{{f.n}}"]}]}]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 32px"}, "c": [{"t": "sc-for", "a": {"list": "{{projects}}", "as": "p", "hint-placeholder-count": "2"}, "c": [{"t": "article", "a": {"style": "display: flex; flex-direction: column; gap: 20px"}, "c": [{"t": "div", "a": {"class": "thumb"}, "c": [{"t": "sc-if", "a": {"value": "{{p.hasCover}}", "hint-placeholder-val": "{{ false }}"}, "c": [{"t": "img", "a": {"src": "{{p.cover}}", "alt": "{{p.title}}", "style": "position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover"}}]}, {"t": "sc-if", "a": {"value": "{{p.showCoverText}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "div", "a": {"class": "deft", "style": "background: {{p.bg}}"}, "c": [{"t": "span", "a": {"class": "mono", "style": "font-size: 30px; font-weight: 600; color: {{p.ink}}"}, "c": ["{{p.repo}}"]}, {"t": "span", "a": {"style": "display: flex; align-items: center; gap: 8px; font-size: 14px; color: {{p.ink}}"}, "c": [{"t": "i", "a": {"style": "width: 10px; height: 10px; border-radius: 99px; background: {{p.lc}}"}}, "{{p.lang}}"]}]}]}]}, {"t": "div", "a": {"style": "display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px"}, "c": [{"t": "span", "a": {"style": "color: #2443C4; font-weight: 600"}, "c": ["{{p.main}}"]}, {"t": "span", "a": {"class": "mono", "style": "color: #6B7079; font-size: 13.5px"}, "c": ["{{p.period}}"]}]}, {"t": "h3", "a": {"style": "margin: 0; font-size: 26px; font-weight: 500; white-space: normal; overflow: visible; line-height: 1.35; word-break: keep-all"}, "c": ["{{p.title}}"]}, {"t": "ul", "a": {"class": "bl sum", "style": "font-size: 15.5px; gap: 10px"}, "c": [{"t": "sc-for", "a": {"list": "{{p.sum}}", "as": "s", "hint-placeholder-count": "3"}, "c": [{"t": "li", "c": ["{{s}}"], "a": {}}]}]}, {"t": "div", "a": {"style": "padding-top: 16px; border-top: 1px solid #E1E3DC; display: flex; flex-direction: column; gap: 6px"}, "c": [{"t": "span", "a": {"style": "font-size: 13.5px; font-weight: 600; color: #6B7079"}, "c": ["사용 기술"]}, {"t": "span", "a": {"style": "font-size: 15.5px"}, "c": ["{{p.stack}}"]}]}, {"t": "div", "a": {"style": "display: flex; gap: 10px"}, "c": [{"t": "a", "a": {"class": "btn p", "style": "border: 0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer", "href": "{{p.detail_page}}"}, "c": ["상세보기"]}, {"t": "a", "a": {"class": "btn o", "href": "{{p.github_url}}"}, "c": ["GitHub"]}]}]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{inDetail}}", "hint-placeholder-val": "{{ false }}"}, "c": [{"t": "section", "a": {"id": "project-detail", "class": "sec", "style": "padding-top: 48px"}, "c": [{"t": "button", "a": {"onClick": "{{closeDetail}}", "style": "border: 0; background: transparent; padding: 0; font: inherit; font-size: 15px; font-weight: 600; color: #2443C4; cursor: pointer"}, "c": ["← 프로젝트 목록으로"]}, {"t": "div", "a": {"class": "card", "style": "margin-top: 20px; padding: 40px; border-left: 4px solid #2443C4; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 40px; align-items: center"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 16px"}, "c": [{"t": "span", "a": {"style": "font-size: 14.5px; color: #4A4F57"}, "c": ["{{d.kind}} · ", {"t": "span", "a": {"class": "mono", "style": "font-size: 13.5px"}, "c": ["{{d.period}}"]}]}, {"t": "h2", "a": {"style": "margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -.6px"}, "c": ["{{d.title}}"]}, {"t": "div", "a": {"style": "display: flex; flex-wrap: wrap; gap: 8px"}, "c": [{"t": "sc-for", "a": {"list": "{{d.techs}}", "as": "t", "hint-placeholder-count": "5"}, "c": [{"t": "span", "a": {"style": "height: 32px; padding: 0 12px; border-radius: 8px; background: #F1F2EE; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center"}, "c": ["{{t}}"]}]}]}, {"t": "a", "a": {"class": "btn o", "href": "https://github.com", "style": "align-self: flex-start"}, "c": ["GitHub ↗"]}]}, {"t": "div", "a": {"class": "thumb"}, "c": [{"t": "div", "a": {"class": "deft", "style": "background: {{d.bg}}"}, "c": [{"t": "span", "a": {"class": "mono", "style": "font-size: 26px; font-weight: 600; color: {{d.ink}}"}, "c": ["{{d.repo}}"]}]}]}]}, {"t": "h3", "a": {"style": "margin: 48px 0 16px; font-size: 22px; font-weight: 600"}, "c": ["핵심 흐름"]}, {"t": "div", "a": {"style": "display: flex; flex-wrap: wrap; gap: 10px; align-items: center"}, "c": [{"t": "sc-for", "a": {"list": "{{d.flow}}", "as": "f", "hint-placeholder-count": "4"}, "c": [{"t": "span", "a": {"class": "card", "style": "padding: 14px 18px; border-left: 3px solid #2443C4; font-size: 15px; font-weight: 500"}, "c": ["{{f}}"]}]}]}, {"t": "h3", "a": {"style": "margin: 48px 0 16px; font-size: 22px; font-weight: 600"}, "c": ["핵심 설계"]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px"}, "c": [{"t": "sc-for", "a": {"list": "{{d.design}}", "as": "g", "hint-placeholder-count": "3"}, "c": [{"t": "div", "a": {"class": "card", "style": "padding: 22px; display: flex; flex-direction: column; gap: 8px"}, "c": [{"t": "b", "a": {"style": "font-size: 16px"}, "c": ["{{g.t}}"]}, {"t": "span", "a": {"style": "font-size: 14.5px; line-height: 1.7; color: #3D424A"}, "c": ["{{g.d}}"]}]}]}]}, {"t": "h3", "a": {"style": "margin: 48px 0 16px; font-size: 22px; font-weight: 600"}, "c": ["트러블슈팅"]}, {"t": "div", "a": {"class": "card", "style": "padding: 8px 28px"}, "c": [{"t": "sc-for", "a": {"list": "{{d.trouble}}", "as": "t", "hint-placeholder-count": "1"}, "c": [{"t": "div", "a": {"style": "padding: 18px 0; border-top: 1px solid #EEEFEA; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 24px"}, "c": [{"t": "b", "a": {"style": "font-size: 15.5px"}, "c": ["{{t.p}}"]}, {"t": "span", "a": {"style": "font-size: 14.5px; line-height: 1.7; color: #3D424A"}, "c": [{"t": "b", "a": {"style": "color: #2443C4"}, "c": ["원인"]}, " {{t.c}}", {"t": "br", "a": {}}, {"t": "b", "a": {"style": "color: #2443C4"}, "c": ["해결"]}, " {{t.s}}"]}]}]}]}, {"t": "h3", "a": {"style": "margin: 48px 0 16px; font-size: 22px; font-weight: 600"}, "c": ["결과 및 화면"]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px"}, "c": [{"t": "sc-for", "a": {"list": "{{d.results}}", "as": "r", "hint-placeholder-count": "2"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 8px"}, "c": [{"t": "div", "a": {"style": "aspect-ratio: 16 / 10; border: 1.5px dashed #C7CAC0; border-radius: 12px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6B7079"}, "c": ["[결과 화면 · {{r}}]"]}, {"t": "span", "a": {"style": "font-size: 14px; color: #4A4F57"}, "c": ["{{r}}"]}]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{sTrouble}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "trouble", "class": "sec"}, "c": [{"t": "div", "a": {"class": "sh"}, "c": [{"t": "h2", "c": ["트러블슈팅"], "a": {}}, {"t": "i", "a": {}}, {"t": "p", "c": ["문제 · 원인 · 해결 · 결과 중심 정리"], "a": {}}]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px"}, "c": [{"t": "sc-for", "a": {"list": "{{troubles}}", "as": "t", "hint-placeholder-count": "2"}, "c": [{"t": "article", "a": {"class": "card", "style": "padding: 32px; display: flex; flex-direction: column"}, "c": [{"t": "span", "a": {"class": "mono", "style": "font-size: 12.5px; font-weight: 600; color: #6B7079; letter-spacing: .5px"}, "c": ["{{t.stack}}"]}, {"t": "div", "a": {"style": "display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 8px 0 18px"}, "c": [{"t": "b", "a": {"style": "font-size: 20px; font-weight: 600"}, "c": ["{{t.project}}"]}, {"t": "span", "a": {"style": "font-size: 13.5px; font-weight: 600; color: #2443C4"}, "c": ["{{t.tag}}"]}]}, {"t": "h3", "a": {"style": "margin: 0 0 8px; padding-top: 18px; border-top: 1px solid #E1E3DC; font-size: 18px; font-weight: 600"}, "c": ["{{t.title}}"]}, {"t": "div", "a": {"class": "ts"}, "c": [{"t": "b", "c": ["문제"], "a": {}}, {"t": "span", "c": ["{{t.p}}"], "a": {}}]}, {"t": "div", "a": {"class": "ts"}, "c": [{"t": "b", "c": ["원인"], "a": {}}, {"t": "span", "c": ["{{t.c}}"], "a": {}}]}, {"t": "div", "a": {"class": "ts"}, "c": [{"t": "b", "c": ["해결"], "a": {}}, {"t": "span", "c": ["{{t.s}}"], "a": {}}]}, {"t": "div", "a": {"class": "ts"}, "c": [{"t": "b", "c": ["결과"], "a": {}}, {"t": "span", "c": ["{{t.r}}"], "a": {}}]}, {"t": "a", "a": {"href": "{{t.detail_page}}", "style": "margin-top: 16px; align-self: flex-start; font-size: 14.5px; font-weight: 600"}, "c": ["프로젝트에서 자세히 보기 →"]}]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{sContact}}", "hint-placeholder-val": "{{ true }}"}, "c": [{"t": "section", "a": {"id": "contact", "class": "sec", "style": "padding-bottom: 96px"}, "c": [{"t": "div", "a": {"class": "sh"}, "c": [{"t": "h2", "c": ["{{contactTitle}}"], "a": {}}, {"t": "i", "a": {}}, {"t": "p", "c": ["{{contactDescription}}"], "a": {}}]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 28px; align-items: start"}, "c": [{"t": "div", "a": {"class": "card", "style": "padding: 32px; display: flex; flex-direction: column"}, "c": [{"t": "h3", "a": {"style": "margin: 0 0 16px; font-size: 22px; font-weight: 500"}, "c": ["연락처 안내"]}, {"t": "sc-for", "a": {"list": "{{links}}", "as": "l", "hint-placeholder-count": "2"}, "c": [{"t": "div", "a": {"style": "display: flex; flex-direction: column; gap: 4px; padding: 16px 0; border-top: 1px solid #EEEFEA"}, "c": [{"t": "span", "a": {"style": "font-size: 12.5px; font-weight: 600; color: #6B7079; letter-spacing: .5px"}, "c": ["{{l.k}}"]}, {"t": "span", "a": {"style": "font-size: 15.5px"}, "c": ["{{l.v}}"]}]}]}]}, {"t": "div", "a": {"class": "card", "style": "padding: 32px; border-top: 3px solid #2443C4; display: flex; flex-direction: column; gap: 14px"}, "c": [{"t": "span", "a": {"style": "font-size: 15px; font-weight: 600"}, "c": ["이메일"]}, {"t": "div", "a": {"style": "height: 56px; padding: 0 20px; border: 1px solid #E1E3DC; border-radius: 10px; background: #FAFAF8; display: flex; align-items: center; font-size: 16px"}, "c": ["{{email}}"]}, {"t": "div", "a": {"style": "display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px"}, "c": [{"t": "button", "a": {"class": "cb", "onClick": "{{copy}}", "style": "border: 0; background: #2443C4; color: #FFFFFF"}, "c": ["{{copyLabel}}"]}, {"t": "a", "a": {"class": "cb", "href": "mailto:{{email}}", "style": "background: #2443C4; color: #FFFFFF"}, "c": ["메일 보내기"]}, {"t": "a", "a": {"class": "cb", "href": "{{githubUrl}}", "style": "border: 1px solid #D9DBD3; background: #FFFFFF; color: #15171A"}, "c": ["GitHub 바로가기"]}, {"t": "a", "a": {"class": "cb", "href": "{{blogUrl}}", "style": "border: 1px solid #D9DBD3; background: #FFFFFF; color: #15171A"}, "c": ["블로그 보기"]}]}]}]}]}]}, {"t": "sc-if", "a": {"value": "{{saved}}", "hint-placeholder-val": "{{ false }}"}, "c": [{"t": "div", "a": {"role": "status", "style": "position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); z-index: 10; background: #15171A; color: #FFFFFF; padding: 14px 20px; border-radius: 12px; font-size: 14.5px; box-shadow: 0 12px 30px rgba(21,23,26,.25)"}, "c": ["jiwon-kim-portfolio.html 파일을 내 PC에 저장했어요"]}]}, {"t": "footer", "a": {"style": "border-top: 1px solid #E1E3DC; padding: 28px 40px; text-align: center; font-size: 13.5px; color: #6B7079"}, "c": ["{{footer}}"]}]}];
+<script>window.__DC_TREE = [{"t":"nav","a":{"class":"nav","aria-label":"포트폴리오 섹션 바로가기"},"c":[{"t":"div","a":{"class":"nav-in"},"c":[{"t":"sc-for","a":{"list":"{{tabs}}","as":"n"},"c":[{"t":"button","a":{"type":"button","class":"{{n.cls}}","aria-current":"{{n.cur}}","onClick":"{{n.pick}}"},"c":["{{n.label}}"]}]}]}]},{"t":"main","a":{"class":"wrap"},"c":[{"t":"article","a":{"class":"article"},"c":[{"t":"section","a":{"id":"home","class":"sec"},"c":[{"t":"div","a":{"class":"home"},"c":[{"t":"div","a":{"class":"home-l"},"c":[{"t":"h1","c":[{"t":"span","c":["{{headline0}}"]},{"t":"span","a":{"class":"c-primary"},"c":["{{headline1}}"]}]},{"t":"p","a":{"class":"lead c-muted"},"c":[{"t":"span","c":["{{summary0}}"]},{"t":"span","c":["{{summary1}}"]}]},{"t":"dl","a":{"class":"stats"},"c":[{"t":"sc-for","a":{"list":"{{stats}}","as":"s"},"c":[{"t":"div","c":[{"t":"dt","a":{"class":"t-label2 w5 c-muted"},"c":["{{s.label}}"]},{"t":"dd","c":["{{s.value}}"]}]}]}]}]},{"t":"div","a":{"class":"home-r"},"c":[{"t":"div","a":{"class":"avatar","role":"img","aria-label":"프로필 사진"},"c":[{"t":"sc-if","a":{"value":"{{hasPhoto}}"},"c":[{"t":"img","a":{"src":"{{photoSrc}}","alt":""}}]},{"t":"sc-if","a":{"value":"{{showPhotoText}}"},"c":["{{photoText}}"]}]},{"t":"div","a":{"class":"who t-body2"},"c":[{"t":"sc-if","a":{"value":"{{hasLocation}}"},"c":[{"t":"span","a":{"class":"c-muted"},"c":[{"t":"svg","a":{"class":"","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"path","a":{"d":"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"}},{"t":"circle","a":{"cx":"12","cy":"10","r":"3"}}]},"{{location}}"]}]},{"t":"sc-if","a":{"value":"{{hasPosition}}"},"c":[{"t":"span","a":{"class":"w6 c-strong"},"c":[{"t":"i","a":{"aria-hidden":"true"}},"{{position}}"]}]}]}]}]}]},{"t":"section","a":{"id":"about","class":"sec"},"c":[{"t":"div","a":{"class":"head"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["{{aboutTitle}}"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"sc-if","a":{"value":"{{hasAboutDescription}}"},"c":[{"t":"p","a":{"class":"t-body2 c-muted"},"c":["{{aboutDescription}}"]}]}]},{"t":"div","a":{"class":"about"},"c":[{"t":"div","a":{"class":"col","style":"gap:32px"},"c":[{"t":"sc-for","a":{"list":"{{groups}}","as":"g"},"c":[{"t":"div","a":{"class":"group"},"c":[{"t":"div","a":{"class":"col","style":"gap:4px"},"c":[{"t":"h3","a":{"class":"t-headline1 w7 c-strong"},"c":["{{g.name}}"]},{"t":"sc-if","a":{"value":"{{g.hasDescription}}"},"c":[{"t":"p","a":{"class":"t-label2 c-muted"},"c":["{{g.description}}"]}]}]},{"t":"ul","a":{"class":"rows t-body2"},"c":[{"t":"sc-for","a":{"list":"{{g.rows}}","as":"r"},"c":[{"t":"li","c":[{"t":"b","a":{"class":"w6 c-strong"},"c":["{{r.name}}"]},{"t":"span","a":{"class":"c-muted"},"c":["{{r.experience}}"]}]}]}]}]}]}]},{"t":"aside","a":{"class":"col","style":"gap:32px"},"c":[{"t":"sc-if","a":{"value":"{{hasMainTech}}"},"c":[{"t":"div","a":{"class":"col","style":"gap:12px"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["주요 기술"]},{"t":"ul","a":{"class":"techs t-label2 w6 c-strong"},"c":[{"t":"sc-for","a":{"list":"{{mainTech}}","as":"t"},"c":[{"t":"li","c":[{"t":"i","a":{"aria-hidden":"true"}},{"t":"span","a":{"class":"trunc"},"c":["{{t}}"]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasAwards}}"},"c":[{"t":"div","a":{"class":"col","style":"gap:12px"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["최근 성과"]},{"t":"ul","a":{"class":"awards col t-body2","style":"gap:8px"},"c":[{"t":"sc-for","a":{"list":"{{awards}}","as":"a"},"c":[{"t":"li","c":[{"t":"span","a":{"class":"date t-label2 w6 c-primary num"},"c":["{{a.date}}"]},{"t":"span","c":["{{a.name}}"]}]}]}]}]}]}]}]}]},{"t":"section","a":{"id":"history","class":"sec"},"c":[{"t":"div","a":{"class":"head"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["{{historyTitle}}"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"sc-if","a":{"value":"{{hasHistoryDescription}}"},"c":[{"t":"p","a":{"class":"t-body2 c-muted"},"c":["{{historyDescription}}"]}]}]},{"t":"div","a":{"class":"history"},"c":[{"t":"div","a":{"class":"col","style":"gap:16px"},"c":[{"t":"div","a":{"class":"col","style":"gap:4px"},"c":[{"t":"h3","a":{"class":"t-headline1 w7 c-strong"},"c":["{{activitiesTitle}}"]},{"t":"sc-if","a":{"value":"{{hasActivitiesDescription}}"},"c":[{"t":"p","a":{"class":"t-label2 c-muted"},"c":["{{activitiesDescription}}"]}]}]},{"t":"ol","a":{"class":"tl"},"c":[{"t":"sc-for","a":{"list":"{{acts}}","as":"a"},"c":[{"t":"li","c":[{"t":"span","a":{"class":"t-label2 w6 c-primary num"},"c":["{{a.period}}"]},{"t":"b","a":{"class":"w7 c-strong"},"c":["{{a.name}}"]},{"t":"sc-if","a":{"value":"{{a.hasRole}}"},"c":[{"t":"span","a":{"class":"t-label2 c-muted"},"c":["{{a.role}}"]}]},{"t":"sc-if","a":{"value":"{{a.hasItems}}"},"c":[{"t":"ul","a":{"class":"bul t-body2"},"c":[{"t":"sc-for","a":{"list":"{{a.items}}","as":"it"},"c":[{"t":"li","c":["{{it}}"]}]}]}]}]}]}]}]},{"t":"div","a":{"class":"col","style":"gap:24px"},"c":[{"t":"sc-if","a":{"value":"{{hasEducation}}"},"c":[{"t":"div","a":{"class":"card edu"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["학력"]},{"t":"b","a":{"class":"w6 c-strong"},"c":["{{eduMajor}}"]},{"t":"span","a":{"class":"t-body2"},"c":["{{eduSchool}}"]},{"t":"span","a":{"class":"t-label2 w6 c-primary num"},"c":["{{eduPeriod}}"]}]}]},{"t":"sc-if","a":{"value":"{{hasCerts}}"},"c":[{"t":"div","a":{"class":"col","style":"gap:12px"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["자격증 및 수상"]},{"t":"ul","a":{"class":"certs t-body2"},"c":[{"t":"sc-for","a":{"list":"{{certs}}","as":"c"},"c":[{"t":"li","c":[{"t":"svg","a":{"class":"","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"circle","a":{"cx":"12","cy":"12","r":"10"}},{"t":"path","a":{"d":"m9 12 2 2 4-4"}}]},{"t":"div","a":{"class":"col","style":"gap:4px"},"c":[{"t":"b","a":{"class":"w6 c-strong"},"c":["{{c.name}}"]},{"t":"span","a":{"class":"t-label2 c-muted num"},"c":["{{c.meta}}"]}]}]}]}]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasProjects}}"},"c":[{"t":"section","a":{"id":"projects","class":"sec"},"c":[{"t":"div","a":{"class":"head"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["프로젝트"]},{"t":"i","a":{"aria-hidden":"true"}}]}]},{"t":"sc-if","a":{"value":"{{hasFilters}}"},"c":[{"t":"div","a":{"class":"filters","role":"tablist","aria-label":"기술별 보기"},"c":[{"t":"sc-for","a":{"list":"{{filters}}","as":"f"},"c":[{"t":"button","a":{"type":"button","role":"tab","class":"{{f.cls}}","aria-selected":"{{f.sel}}","onClick":"{{f.pick}}"},"c":["{{f.label}}"]}]}]}]},{"t":"div","a":{"class":"g2"},"c":[{"t":"sc-for","a":{"list":"{{projects}}","as":"p"},"c":[{"t":"article","a":{"class":"card pcard"},"c":[{"t":"div","a":{"class":"cover"},"c":[{"t":"sc-if","a":{"value":"{{p.hasCover}}"},"c":[{"t":"img","a":{"src":"{{p.cover}}","alt":"","onError":"{{p.coverFailed}}"}}]},{"t":"sc-if","a":{"value":"{{p.showAuto}}"},"c":[{"t":"div","a":{"class":"auto"},"c":[{"t":"span","a":{"class":"repo mono c-strong trunc"},"c":["{{p.repo}}"]},{"t":"sc-if","a":{"value":"{{p.hasLanguage}}"},"c":[{"t":"span","a":{"class":"lang t-label2 w5 c-muted"},"c":[{"t":"i","a":{"aria-hidden":"true"}},"{{p.language}}"]}]}]}]}]},{"t":"div","a":{"class":"pbody"},"c":[{"t":"div","a":{"class":"prow t-label2"},"c":[{"t":"span","a":{"class":"w6 c-primary"},"c":["{{p.mainTech}}"]},{"t":"span","a":{"class":"c-subtle num"},"c":["{{p.period}}"]}]},{"t":"h3","a":{"class":"t-heading2 w7 c-strong trunc"},"c":["{{p.title}}"]},{"t":"ul","a":{"class":"sum t-body2 c-muted"},"c":[{"t":"sc-for","a":{"list":"{{p.summary}}","as":"s"},"c":[{"t":"li","c":[{"t":"b","a":{"aria-hidden":"true"},"c":["-"]},{"t":"span","a":{"class":"trunc"},"c":["{{s}}"]}]}]}]},{"t":"p","a":{"class":"t-label2"},"c":[{"t":"span","a":{"class":"w5 c-subtle","style":"margin-right:8px"},"c":["사용 기술"]},"{{p.stack}}"]},{"t":"div","a":{"class":"pbtn"},"c":[{"t":"sc-if","a":{"value":"{{p.hasDetail}}"},"c":[{"t":"a","a":{"class":"btn btn-p btn-lg","href":"{{p.detailPage}}"},"c":["상세보기"]}]},{"t":"sc-if","a":{"value":"{{p.hasGithub}}"},"c":[{"t":"a","a":{"class":"btn btn-o btn-lg","href":"{{p.githubUrl}}","target":"_blank","rel":"noopener noreferrer"},"c":["GitHub"]}]}]}]}]}]}]}]}]},{"t":"section","a":{"id":"trouble","class":"sec"},"c":[{"t":"div","a":{"class":"head"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["트러블슈팅"]},{"t":"i","a":{"aria-hidden":"true"}}]}]},{"t":"sc-if","a":{"value":"{{noTroubles}}"},"c":[{"t":"p","a":{"class":"empty-box t-label2 c-muted"},"c":["아직 트러블슈팅이 없어요"]}]},{"t":"div","a":{"class":"g2"},"c":[{"t":"sc-for","a":{"list":"{{troubles}}","as":"t"},"c":[{"t":"article","a":{"class":"card tcard"},"c":[{"t":"sc-if","a":{"value":"{{t.hasStack}}"},"c":[{"t":"span","a":{"class":"t-caption1 w5 c-subtle"},"c":["{{t.stack}}"]}]},{"t":"div","a":{"class":"t-label2","style":"display:flex;align-items:center;gap:8px"},"c":[{"t":"b","a":{"class":"w6 c-strong"},"c":["{{t.project}}"]},{"t":"sc-if","a":{"value":"{{t.hasTag}}"},"c":[{"t":"span","a":{"class":"tag t-caption1 w6"},"c":["{{t.tag}}"]}]}]},{"t":"h3","a":{"class":"t-headline1 w7 c-strong"},"c":["{{t.title}}"]},{"t":"dl","a":{"class":"tdl t-body2"},"c":[{"t":"sc-for","a":{"list":"{{t.rows}}","as":"r"},"c":[{"t":"div","c":[{"t":"dt","c":["{{r.label}}"]},{"t":"dd","a":{"class":"pre"},"c":["{{r.text}}"]}]}]}]}]}]}]}]},{"t":"section","a":{"id":"contact","class":"sec"},"c":[{"t":"div","a":{"class":"head"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["연락처"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"sc-if","a":{"value":"{{hasContactDescription}}"},"c":[{"t":"p","a":{"class":"t-body2 c-muted"},"c":["{{contactDescription}}"]}]}]},{"t":"div","a":{"class":"contact"},"c":[{"t":"div","a":{"class":"col","style":"gap:12px"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["연락처 안내"]},{"t":"ul","a":{"class":"links t-body2"},"c":[{"t":"sc-for","a":{"list":"{{links}}","as":"l"},"c":[{"t":"li","c":[{"t":"span","a":{"class":"k t-label2 w6 c-subtle"},"c":["{{l.label}}"]},{"t":"span","c":["{{l.value}}"]}]}]}]}]},{"t":"div","a":{"class":"card mail"},"c":[{"t":"span","a":{"class":"t-label2 w5 c-muted"},"c":["이메일"]},{"t":"span","a":{"class":"t-heading2 w7 c-strong"},"c":["{{email}}"]},{"t":"div","a":{"class":"acts"},"c":[{"t":"button","a":{"type":"button","class":"btn btn-p","disabled":"{{noEmail}}","onClick":"{{copy}}"},"c":["{{copyLabel}}"]},{"t":"sc-if","a":{"value":"{{hasEmail}}"},"c":[{"t":"a","a":{"class":"btn btn-p","href":"mailto:{{email}}"},"c":["메일 보내기"]}]},{"t":"sc-for","a":{"list":"{{linkButtons}}","as":"b"},"c":[{"t":"a","a":{"class":"btn btn-o","href":"{{b.url}}","target":"_blank","rel":"noopener noreferrer"},"c":["{{b.label}} 바로가기"]}]}]}]}]}]}]},{"t":"footer","a":{"class":"foot t-label2 c-subtle"},"c":["{{footer}}"]}]}];
 window.__DC_DEFAULTS = {};</script>
-<script>window.__PAGE_DATA = {"name": "광운대 지원 포트폴리오", "owner": "최성윤", "footer": "© 2026 최성윤", "home": {"headline": ["성실하고 책임감 있게 맡은 일을 끝까지 완수하는 백엔드 개발자", "PHP Laravel과 Spring Boot 기반의 웹 서비스 흐름을 설계·구현한 개발자"], "summary": ["팀/선수/경기/뉴스/패치노트 조회, 회원 관리, CRUD, 파일 업로드, 관리자 대시보드 등 서비스 흐름을 구현했습니다.", "영화 추천, 상세 조회, 상영관·좌석 동기화, 결제 상태 검증, 레거시 URL 연결 등 데이터 정합성과 사용자 흐름을 함께 고려했습니다."], "stats": [{"label": "프로젝트", "value": 2}, {"label": "수상 경험", "value": 1}, {"label": "활동", "value": 2}], "photo_text": "최", "photo": "images/photo.jpg", "photos": [], "location": "서울 성동구", "position": "백엔드"}, "about": {"title": "사용 기술 및 경험", "description": "이 포트폴리오에 입력한 기술과 경험입니다.", "groups": [{"name": "기술 스택", "description": "이 포트폴리오에 입력한 기술입니다.", "rows": [{"name": "Jupyter Notebook", "experience": "[확인 필요]"}, {"name": "HTML", "experience": "[확인 필요]"}, {"name": "Python", "experience": "[확인 필요]"}, {"name": "TypeScript", "experience": "[확인 필요]"}, {"name": "CSS", "experience": "[확인 필요]"}, {"name": "Java", "experience": "[확인 필요]"}, {"name": "JavaScript", "experience": "[확인 필요]"}, {"name": "Blade", "experience": "[확인 필요]"}, {"name": "PHP", "experience": "[확인 필요]"}, {"name": "Dockerfile", "experience": "[확인 필요]"}, {"name": "Batchfile", "experience": "[확인 필요]"}]}], "main_tech": [{"name": "Jupyter Notebook", "color": "#2443C4"}, {"name": "HTML", "color": "#2443C4"}, {"name": "Python", "color": "#2443C4"}, {"name": "TypeScript", "color": "#2443C4"}, {"name": "CSS", "color": "#2443C4"}, {"name": "Java", "color": "#2443C4"}], "awards": [{"date": "2025.7", "name": "교내 캡스톤"}]}, "history": {"title": "이력 및 활동", "description": "학력은 내정보이고, 활동과 자격은 입력한 내용입니다.", "activities_title": "활동 및 경험", "activities_description": "입력한 활동입니다.", "activities": [{"period": "2025.07 - 2025.11", "name": "게임 개발 동아리", "role": "백엔드", "items": ["DB 설계 및 api 제작"]}, {"period": "2025.02 - 2025.07", "name": "부트캠프", "role": "", "items": []}], "education": {"major": "컴퓨터공학", "school": "광운대학교 · 대학교(4년) · 재학중", "period": "2022.02 – 2027.02"}, "certificates": [{"name": "정보처리기사", "org": "대한민국", "date": "2025.1"}, {"name": "교내 캡스톤", "org": "광운대학교", "date": "2025.7"}]}, "projects": [{"id": "esports-portal-management", "detail_page": "1/PortfolioDetail.html", "github_url": "https://github.com/Choi-Sungyun0716/esports-portal-management", "language": "PHP", "language_color": "#2443C4", "cover_bg": "#1F2430", "cover_ink": "#F4F5F2", "main_tech": "PHP", "period": "2026.03 – 2026.03", "title": "e스포츠 포털 관리 시스템", "stack": "PHP · Laravel · Blade · HTML · CSS · JavaScript · Eloquent · MySQL · Auth · Middleware · Storage · DB · Schema", "summary": ["검색과 필터 조건이 늘어나는 목록 화면을 `when()`과 `withQueryString()`으로 정리해 유지보수 가능한 조회 구조를 만들었습니다.", "팀과 선수의 이미지 업로드를 단순 저장에서 끝내지 않고 삭제 시 파일 정리까지 연결해 리소스 생명주기를 관리했습니다.", "관리자 대시보드에 요약 수치와 최근 이력, 리그별 분포를 함께 배치해 운영 상태를 한 화면에서 파악할 수 있게 했습니다."], "cover_image": "1/images/hero.webp"}, {"id": "cineflow-spring-boot", "detail_page": "2/PortfolioDetail.html", "github_url": "https://github.com/Choi-Sungyun0716/cineflow-spring-boot", "language": "Java", "language_color": "#2443C4", "cover_bg": "#1F2430", "cover_ink": "#F4F5F2", "main_tech": "Java", "period": "2026.03 – 2026.07", "title": "Cineflow Spring Boot", "stack": "Java · Spring Boot · Spring MVC · Thymeleaf 계열 SSR · JPA · Spring Data JPA · RestClient · Lombok", "summary": ["TMDB 응답이 없을 때도 로컬 데이터를 대체해 홈 화면이 비지 않도록 fallback 구조를 설계했습니다.", "상영관 수정 시 운영 중인 회차와 좌석 데이터가 깨지지 않도록 도메인 제약을 서비스 계층에 명시했습니다.", "레거시 URL을 새 라우트로 안전하게 연결해 기존 링크 호환성을 유지하면서 화면 구조를 정리했습니다."], "cover_image": ""}], "troubleshooting": [{"stack": "", "project": "e스포츠 포털 관리 시스템", "tag": "", "title": "검색어, 역할, 팀, 활성 상태, 게임, 버전처럼 목록 조건이 많아지면서 조회 로직이 복잡해질 수 있었습니다.", "problem": "검색어, 역할, 팀, 활성 상태, 게임, 버전처럼 목록 조건이 많아지면서 조회 로직이 복잡해질 수 있었습니다.", "cause": "조건 분기를 if문으로 누적하면 컨트롤러 코드가 길어지고 유지보수가 어려워집니다.", "solution": "`when()`으로 조건부 쿼리를 체이닝하고 `withQueryString()`으로 필터 상태를 페이지 이동 시에도 유지하도록 구성했습니다.", "result": "필터 조건이 늘어나도 쿼리 구조를 일관되게 유지할 수 있는 목록 화면이 되었습니다.", "detail_page": ""}, {"stack": "", "project": "e스포츠 포털 관리 시스템", "tag": "", "title": "업로드한 파일을 DB 레코드만 삭제하고 저장소 파일을 남겨두면 고아 파일이 쌓일 수 있었습니다.", "problem": "업로드한 파일을 DB 레코드만 삭제하고 저장소 파일을 남겨두면 고아 파일이 쌓일 수 있었습니다.", "cause": "엔터티 삭제와 파일 삭제가 분리되어 있으면 파일 자원이 정리되지 않습니다.", "solution": "`Storage::disk('public')-\u003edelete($rel)`로 삭제 시 실제 저장 파일까지 정리하도록 구현했습니다.", "result": "팀 삭제 시 업로드 파일까지 함께 정리되는 리소스 생명주기 관리가 가능해졌습니다.", "detail_page": ""}, {"stack": "", "project": "Cineflow Spring Boot", "tag": "", "title": "이미 회차가 연결된 상영관의 정보를 수정하면 좌석 배치와 회차 데이터 정합성이 깨질 수 있었습니다.", "problem": "이미 회차가 연결된 상영관의 정보를 수정하면 좌석 배치와 회차 데이터 정합성이 깨질 수 있었습니다.", "cause": "상영관의 소속 극장과 총 좌석 수가 회차 및 좌석 생성의 기준 데이터이기 때문입니다.", "solution": "ScreenService.updateScreen()에서 회차 존재 여부를 확인하고, 소속 극장 변경과 총 좌석 수 변경을 예외로 차단했습니다.", "result": "운영 중인 상영관의 핵심 속성 변경으로 인한 데이터 불일치를 사전에 방지했습니다.", "detail_page": ""}], "contact": {"title": "연락처", "description": "call. 010-7496-1941", "email": "csu030716@naver.com", "links": [{"label": "GITHUB", "value": "github.com/Choi-Sungyun0716", "url": "https://github.com/Choi-Sungyun0716"}]}};</script>
+<script>
+// 개발자 포트폴리오 — 완성 화면 (프론트 components/portfolio/portfolio-template.tsx와 같은 구조 · 색).
+// 데이터 = DevPortfolio.json (window.__PAGE_DATA). 카드 「상세보기」는 detail_page(「{번호}/PortfolioDetail.html」)로 연다
+const SAMPLE_PORTFOLIO = {
+  owner: "김지원", footer: "© 2026 김지원",
+  home: {
+    headline: ["사용자가 매일 쓰는 화면을", "근거 있게 만드는 개발자"],
+    summary: ["React · TypeScript · Spring Boot 기반 웹 프로젝트", "예매 · 관리자 화면 · 스터디 모집 서비스 구현"],
+    stats: [{ value: 2, label: "프로젝트" }, { value: 1, label: "수상 경험" }, { value: 3, label: "활동" }],
+    photo_text: "김", photo: "", location: "서울 강남구", position: "신입 프론트엔드 개발자 포지션 지원"
+  },
+  about: {
+    title: "사용 기술 및 경험", description: "프로젝트에서 직접 사용한 기술을 정리했어요.",
+    groups: [{ name: "프론트엔드", description: "화면 구현에 직접 사용한 기술", rows: [{ name: "React · TypeScript", experience: "스터디 모집 서비스 구현" }] }],
+    main_tech: [{ name: "TypeScript" }, { name: "React" }, { name: "Java" }, { name: "Spring Boot" }],
+    awards: [{ date: "2025.11", name: "교내 해커톤 우수상" }]
+  },
+  history: {
+    title: "이력 및 활동", description: "학습 과정, 활동 기간, 자격 · 수상",
+    activities_title: "활동 및 경험", activities_description: "동아리, 교육, 스터디로 쌓은 경험",
+    activities: [{ period: "2026.03 – 2026.08", name: "웹개발 동아리 DEVLAB", role: "프론트엔드 리드", items: ["동아리 홈페이지 리뉴얼"] }],
+    education: { major: "컴퓨터공학과", school: "한빛대학교 · 대학교(4년) · 졸업예정", period: "2021.03 – 2027.02" },
+    certificates: [{ name: "정보처리기사", org: "한국산업인력공단", date: "2026.06" }]
+  },
+  projects: [
+    { id: "cineflow", detail_page: "1/PortfolioDetail.html", github_url: "https://github.com/jiwon/cineflow", language: "Java", main_tech: "Spring Boot",
+      period: "2026.05 – 2026.06", title: "CineFlow 영화 예매 관리 시스템", stack: "Java · Spring Boot · JPA · MySQL",
+      summary: ["좌석 선택 · 예매 · 결제 흐름 구현", "동시 예매 시 좌석 중복 방지"], cover_image: "" },
+    { id: "study-mate", detail_page: "2/PortfolioDetail.html", github_url: "https://github.com/jiwon/study-mate", language: "TypeScript", main_tech: "React",
+      period: "2025.11 – 2026.01", title: "StudyMate 스터디 모집 서비스", stack: "React · TypeScript · Zustand",
+      summary: ["4인 팀 프로젝트, 프론트엔드 리드", "모집글 작성 · 신청 · 승인 흐름 구현"], cover_image: "" }
+  ],
+  troubleshooting: [
+    { stack: "Spring Boot · JPA", project: "CineFlow", tag: "예매 동시성", title: "같은 좌석 중복 예매 막기",
+      problem: "같은 좌석에 동시에 예매하면 2건이 저장됨", cause: "조회와 갱신 사이의 경쟁 조건", solution: "비관적 락 적용", result: "중복 예매 0건" }
+  ],
+  contact: {
+    title: "연락처", description: "채용 문의나 협업 제안은 이메일로 보내주세요.", email: "jiwon.dev@example.com",
+    links: [{ label: "GITHUB", value: "github.com/jiwon", url: "https://github.com/jiwon" }, { label: "블로그", value: "jiwon.dev", url: "https://example.com" }]
+  }
+};
+
+const SECTIONS = [["home", "홈"], ["about", "소개"], ["history", "이력 및 활동"], ["projects", "프로젝트"], ["trouble", "트러블슈팅"], ["contact", "연락처"]];
+const SPY_OFFSET = 100; // 섹션 메뉴 바 높이 + 여유
+const TROUBLE_ROWS = [["problem", "문제"], ["cause", "원인"], ["solution", "해결"], ["result", "결과"]];
+</script>
+<script>window.__PAGE_DATA = {"name": "광운대 지원 포트폴리오", "owner": "최성윤", "footer": "© 2026 최성윤", "home": {"headline": ["성실하고 책임감 있게 맡은 일을 끝까지 완수하는 백엔드 개발자", "PHP Laravel과 Spring Boot 기반의 웹 서비스 흐름을 설계·구현한 개발자"], "summary": ["팀/선수/경기/뉴스/패치노트 조회, 회원 관리, CRUD, 파일 업로드, 관리자 대시보드 등 서비스 흐름을 구현했습니다.", "영화 추천, 상세 조회, 상영관·좌석 동기화, 결제 상태 검증, 레거시 URL 연결 등 데이터 정합성과 사용자 흐름을 함께 고려했습니다."], "stats": [{"label": "프로젝트", "value": 2}, {"label": "수상 경험", "value": 1}, {"label": "활동", "value": 2}], "photo_text": "최", "photo": "images/photo.jpg", "photos": [], "location": "서울 성동구", "position": "백엔드"}, "about": {"title": "사용 기술 및 경험", "description": "이 포트폴리오에 입력한 기술과 경험입니다.", "groups": [{"name": "기술 스택", "description": "이 포트폴리오에 입력한 기술입니다.", "rows": [{"name": "Jupyter Notebook", "experience": "[확인 필요]"}, {"name": "HTML", "experience": "[확인 필요]"}, {"name": "Python", "experience": "[확인 필요]"}, {"name": "TypeScript", "experience": "[확인 필요]"}, {"name": "CSS", "experience": "[확인 필요]"}, {"name": "Java", "experience": "[확인 필요]"}, {"name": "JavaScript", "experience": "[확인 필요]"}, {"name": "Blade", "experience": "[확인 필요]"}, {"name": "PHP", "experience": "[확인 필요]"}, {"name": "Dockerfile", "experience": "[확인 필요]"}, {"name": "Batchfile", "experience": "[확인 필요]"}]}], "main_tech": [{"name": "Jupyter Notebook", "color": "#2443C4"}, {"name": "HTML", "color": "#2443C4"}, {"name": "Python", "color": "#2443C4"}, {"name": "TypeScript", "color": "#2443C4"}, {"name": "CSS", "color": "#2443C4"}, {"name": "Java", "color": "#2443C4"}], "awards": [{"date": "2025.7", "name": "교내 캡스톤"}]}, "history": {"title": "이력 및 활동", "description": "학력은 내정보이고, 활동과 자격은 입력한 내용입니다.", "activities_title": "활동 및 경험", "activities_description": "입력한 활동입니다.", "activities": [{"period": "2025.07 - 2025.11", "name": "게임 개발 동아리", "role": "백엔드", "items": ["DB 설계 및 api 제작"]}, {"period": "2025.02 - 2025.07", "name": "부트캠프", "role": "", "items": []}], "education": {"major": "컴퓨터공학", "school": "광운대학교 · 대학교(4년) · 재학중", "period": "2022.02 – 2027.02"}, "certificates": [{"name": "정보처리기사", "org": "대한민국", "date": "2025.1"}, {"name": "교내 캡스톤", "org": "광운대학교", "date": "2025.7"}]}, "projects": [{"id": "esports-portal-management", "detail_page": "1/PortfolioDetail.html", "github_url": "https://github.com/Choi-Sungyun0716/esports-portal-management", "language": "PHP", "language_color": "#2443C4", "cover_bg": "#1F2430", "cover_ink": "#F4F5F2", "main_tech": "PHP", "period": "2026.03 – 2026.03", "title": "e스포츠 포털 관리 시스템", "stack": "PHP · Laravel · Blade · HTML · CSS · JavaScript · Eloquent · MySQL · Auth · Middleware · Storage · DB · Schema", "summary": ["검색과 필터 조건이 늘어나는 목록 화면을 `when()`과 `withQueryString()`으로 정리해 유지보수 가능한 조회 구조를 만들었습니다.", "팀과 선수의 이미지 업로드를 단순 저장에서 끝내지 않고 삭제 시 파일 정리까지 연결해 리소스 생명주기를 관리했습니다.", "관리자 대시보드에 요약 수치와 최근 이력, 리그별 분포를 함께 배치해 운영 상태를 한 화면에서 파악할 수 있게 했습니다."], "cover_image": "1/images/hero.png"}, {"id": "cineflow-spring-boot", "detail_page": "2/PortfolioDetail.html", "github_url": "https://github.com/Choi-Sungyun0716/cineflow-spring-boot", "language": "Java", "language_color": "#2443C4", "cover_bg": "#1F2430", "cover_ink": "#F4F5F2", "main_tech": "Java", "period": "2026.03 – 2026.07", "title": "Cineflow Spring Boot", "stack": "Java · Spring Boot · Spring MVC · Thymeleaf 계열 SSR · JPA · Spring Data JPA · RestClient · Lombok", "summary": ["TMDB 응답이 없을 때도 로컬 데이터를 대체해 홈 화면이 비지 않도록 fallback 구조를 설계했습니다.", "상영관 수정 시 운영 중인 회차와 좌석 데이터가 깨지지 않도록 도메인 제약을 서비스 계층에 명시했습니다.", "레거시 URL을 새 라우트로 안전하게 연결해 기존 링크 호환성을 유지하면서 화면 구조를 정리했습니다."], "cover_image": ""}], "troubleshooting": [{"stack": "", "project": "e스포츠 포털 관리 시스템", "tag": "", "title": "검색어, 역할, 팀, 활성 상태, 게임, 버전처럼 목록 조건이 많아지면서 조회 로직이 복잡해질 수 있었습니다.", "problem": "검색어, 역할, 팀, 활성 상태, 게임, 버전처럼 목록 조건이 많아지면서 조회 로직이 복잡해질 수 있었습니다.", "cause": "조건 분기를 if문으로 누적하면 컨트롤러 코드가 길어지고 유지보수가 어려워집니다.", "solution": "`when()`으로 조건부 쿼리를 체이닝하고 `withQueryString()`으로 필터 상태를 페이지 이동 시에도 유지하도록 구성했습니다.", "result": "필터 조건이 늘어나도 쿼리 구조를 일관되게 유지할 수 있는 목록 화면이 되었습니다.", "detail_page": ""}, {"stack": "", "project": "e스포츠 포털 관리 시스템", "tag": "", "title": "업로드한 파일을 DB 레코드만 삭제하고 저장소 파일을 남겨두면 고아 파일이 쌓일 수 있었습니다.", "problem": "업로드한 파일을 DB 레코드만 삭제하고 저장소 파일을 남겨두면 고아 파일이 쌓일 수 있었습니다.", "cause": "엔터티 삭제와 파일 삭제가 분리되어 있으면 파일 자원이 정리되지 않습니다.", "solution": "`Storage::disk('public')-\u003edelete($rel)`로 삭제 시 실제 저장 파일까지 정리하도록 구현했습니다.", "result": "팀 삭제 시 업로드 파일까지 함께 정리되는 리소스 생명주기 관리가 가능해졌습니다.", "detail_page": ""}, {"stack": "", "project": "Cineflow Spring Boot", "tag": "", "title": "이미 회차가 연결된 상영관의 정보를 수정하면 좌석 배치와 회차 데이터 정합성이 깨질 수 있었습니다.", "problem": "이미 회차가 연결된 상영관의 정보를 수정하면 좌석 배치와 회차 데이터 정합성이 깨질 수 있었습니다.", "cause": "상영관의 소속 극장과 총 좌석 수가 회차 및 좌석 생성의 기준 데이터이기 때문입니다.", "solution": "ScreenService.updateScreen()에서 회차 존재 여부를 확인하고, 소속 극장 변경과 총 좌석 수 변경을 예외로 차단했습니다.", "result": "운영 중인 상영관의 핵심 속성 변경으로 인한 데이터 불일치를 사전에 방지했습니다.", "detail_page": ""}], "contact": {"title": "연락처", "description": "call. 010-7496-1941", "email": "csu030716@naver.com", "links": [{"label": "GITHUB", "value": "github.com/Choi-Sungyun0716", "url": "https://github.com/Choi-Sungyun0716"}]}};</script>
 <script>
 
 class Component extends DCLogic {
-  constructor(p){ super(p); this.state = { filter: '전체', copied: false, tab: 'home', saved: false, detail: '' }; this._spy = this._spy.bind(this); }
-  componentDidMount() { try { window.addEventListener('scroll', this._spy, { passive: true }); } catch (e) {} }
-  componentWillUnmount() { try { window.removeEventListener('scroll', this._spy); } catch (e) {} }
+  constructor(p){ super(p); this.state = { filter: null, copied: false, tab: "home", failed: {} }; this._spy = this._spy.bind(this); }
+  componentDidMount() { try { window.addEventListener("scroll", this._spy, { passive: true }); this._spy(); } catch (e) {} }
+  _ids() { return SECTIONS.map((s) => s[0]).filter((id) => document.getElementById(id)); }
   _spy() {
-    if (this.state.detail || this._lock) return;
-    const ids = ['home', 'about', 'history', 'projects', 'trouble', 'contact'];
-    let cur = ids[0];
-    for (const id of ids) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 140) cur = id; }
+    if (this._lock) return;
+    const ids = this._ids();
+    let cur = ids[0] || "home";
+    for (const id of ids) { const el = document.getElementById(id); if (el.getBoundingClientRect().top <= SPY_OFFSET) cur = id; }
     const de = document.documentElement;
-    if (window.innerHeight + window.scrollY >= de.scrollHeight - 4) cur = 'contact';
+    if (window.innerHeight + window.scrollY >= de.scrollHeight - 4) cur = ids[ids.length - 1] || cur;
     if (cur !== this.state.tab) this.setState({ tab: cur });
   }
   _go(id) {
-    const run = () => { const el = document.getElementById(id); if (!el) return;
-      this._lock = true; clearTimeout(this._lt); this._lt = setTimeout(() => { this._lock = false; this._spy(); }, 700);
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-    if (this.state.detail) { this.setState({ detail: '', tab: id }); setTimeout(run, 30); } else { this.setState({ tab: id }); run(); }
-  }
-  imageAddress(value) {
-    const text = String(value || '');
-    if (/^https?:\/\//i.test(text) || text.indexOf('images/') >= 0) return text;
-    return '';
-  }
-  fromPage(page) {
-    const s = this.state;
-    const home = page.home || {};
-    const about = page.about || {};
-    const history = page.history || {};
-    const contact = page.contact || {};
-    const education = history.education || {};
-    const headline = home.headline || [];
-    const summary = home.summary || [];
-    const stats = home.stats || [];
-    const stat = (label) => { const found = stats.find(item => item.label === label); return found ? String(found.value) : ''; };
-    const cards = page.projects || [];
-    const names = ['전체'].concat(cards.map(item => item.main_tech).filter((name, index, all) => name && all.indexOf(name) === index));
-    const github = ((contact.links || []).find(item => String(item.label || '').toUpperCase() === 'GITHUB') || {}).url || '';
-    const blog = ((contact.links || []).find(item => item.label === '블로그') || {}).url || '';
-    const listed = (home.photos || []).map(item => ({
-      src: this.imageAddress(item && item.file),
-      label: (item && item.label) || ''
-    })).filter(item => item.src);
-    const photoSrc = this.imageAddress(home.photo) || (listed[0] ? listed[0].src : '');
-    const gallery = this.imageAddress(home.photo) ? listed : listed.slice(1);
-    return {
-      headlineLead: headline[0] || '', headlineAccent: headline[1] || '',
-      summaryLine1: summary[0] || '', summaryLine2: summary[1] || '',
-      statProjects: stat('프로젝트'), statAwards: stat('수상 경험'), statActivities: stat('활동'),
-      photoText: home.photo_text || '', photoSrc: photoSrc, hasPhoto: !!photoSrc, showPhotoText: !photoSrc,
-      gallery: gallery, hasGallery: gallery.length > 0,
-      location: home.location || '', position: home.position || '',
-      eduMajor: education.major || '', eduSchool: education.school || '', eduPeriod: education.period || '',
-      email: contact.email || '', footer: page.footer || '', githubUrl: github, blogUrl: blog,
-      aboutTitle: about.title || '', aboutDescription: about.description || '',
-      historyTitle: history.title || '', historyDescription: history.description || '',
-      activitiesTitle: history.activities_title || '', activitiesDescription: history.activities_description || '',
-      contactTitle: contact.title || '', contactDescription: contact.description || '',
-      inDetail: false, sHome: true, sAbout: true, sHistory: true, sProjects: true, sTrouble: true, sContact: true, saved: false,
-      groups: (about.groups || []).map(group => ({ name: group.name, desc: group.description, rows: (group.rows || []).map(row => ({ t: row.name, e: row.experience })) })),
-      mainTech: (about.main_tech || []).map(item => ({ n: item.name, c: item.color })),
-      awards: about.awards || [],
-      acts: (history.activities || []).map(item => ({ period: item.period, name: item.name, role: item.role, items: item.items || [] })),
-      certs: history.certificates || [],
-      filters: names.map(name => ({ n: name, cls: s.filter === name ? 'ft on' : 'ft', sel: s.filter === name ? 'true' : 'false', pick: () => this.setState({ filter: name }) })),
-      projects: cards.filter(item => s.filter === '전체' || item.main_tech === s.filter).map(item => ({
-        repo: item.language || item.title, lang: item.language, lc: item.language_color, bg: item.cover_bg, ink: item.cover_ink,
-        main: item.main_tech, period: item.period, title: item.title, stack: item.stack, sum: item.summary || [],
-        cover: this.imageAddress(item.cover_image), hasCover: !!this.imageAddress(item.cover_image),
-        showCoverText: !this.imageAddress(item.cover_image),
-        detail_page: item.detail_page, github_url: item.github_url || '#'
-      })),
-      troubles: (page.troubleshooting || []).map(item => ({
-        stack: item.stack, project: item.project, tag: item.tag, title: item.title,
-        p: item.problem, c: item.cause, s: item.solution, r: item.result, detail_page: item.detail_page
-      })),
-      links: (contact.links || []).map(item => ({ k: item.label, v: item.value })),
-      copyLabel: s.copied ? '복사했어요' : '이메일 복사', copy: () => this.setState({ copied: true })
-    };
+    const el = document.getElementById(id); if (!el) return;
+    this._lock = true; clearTimeout(this._lt); this._lt = setTimeout(() => { this._lock = false; this._spy(); }, 700);
+    this.setState({ tab: id });
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   renderVals() {
-    const page = window.__PAGE_DATA;
-    if (page && page.home) return this.fromPage(page);
+    const page = (window.__PAGE_DATA && window.__PAGE_DATA.home) ? window.__PAGE_DATA : SAMPLE_PORTFOLIO;
     const s = this.state;
-    const all = [
-      { repo: 'cineflow', lang: 'Java', lc: '#B07219', bg: '#1F2430', ink: '#F4F5F2', main: 'Spring Boot', period: '2026.05 – 2026.06',
-        title: 'CineFlow 영화 예매 관리 시스템', stack: 'Java · Spring Boot · JPA · MySQL · Thymeleaf',
-        sum: ['Spring Boot 영화 예매 웹 서비스', '좌석 선택 · 예매 · 결제 흐름 구현', '동시 예매 시 좌석 중복 방지(비관적 락)', '관리자 영화 · 상영 일정 관리'] },
-      { repo: 'study-mate', lang: 'JavaScript', lc: '#C9A400', bg: '#E3E9FF', ink: '#15171A', main: 'React', period: '2025.11 – 2026.01',
-        title: 'StudyMate 스터디 모집 서비스', stack: 'React · TypeScript · Zustand · Vite',
-        sum: ['4인 팀 프로젝트, 프론트엔드 리드', '모집글 작성 · 신청 · 승인 흐름 구현', '공통 컴포넌트 규칙과 PR 템플릿 운영'] }
-    ];
-    const names = ['전체'].concat(all.map(p => p.main));
-    const DETAIL = {
-      cineflow: { repo: 'cineflow', bg: '#1F2430', ink: '#F4F5F2', kind: '개인 프로젝트', period: '2026.05 – 2026.06', title: 'CineFlow 영화 예매 관리 시스템',
-        techs: ['Java', 'Spring Boot', 'JPA', 'MySQL', 'Thymeleaf'], flow: ['영화 · 상영 일정 조회', '좌석 선택', '예매 · 결제', '예매 내역 조회'],
-        design: [ { t: '좌석 동시성 제어', d: '비관적 락으로 같은 좌석의 동시 예매를 막고, 100건 동시 요청 테스트로 검증했어요.' },
-          { t: '조회 성능', d: 'fetch join과 batch size로 상영 목록 N+1 조회를 1회로 줄였어요.' },
-          { t: '관리자 화면', d: '영화 · 극장 · 상영 일정을 한 화면에서 관리하도록 나눴어요.' } ],
-        trouble: [ { p: '같은 좌석에 동시에 예매하면 2건이 저장됨', c: '좌석 조회와 갱신 사이의 경쟁 조건', s: '비관적 락 적용 + 100건 동시 요청 테스트' } ],
-        results: ['예매 화면', '관리자 대시보드'] },
-      'study-mate': { repo: 'study-mate', bg: '#E3E9FF', ink: '#15171A', kind: '팀 프로젝트 · 4인', period: '2025.11 – 2026.01', title: 'StudyMate 스터디 모집 서비스',
-        techs: ['React', 'TypeScript', 'Zustand', 'Vite'], flow: ['모집글 작성', '신청', '승인', '스터디 시작'],
-        design: [ { t: '공통 컴포넌트 규칙', d: '버튼 · 입력 · 카드 컴포넌트 규칙을 먼저 정해 화면마다 다르던 모양을 맞췄어요.' },
-          { t: '폼 상태 관리', d: 'Zustand 스토어 초기화 시점을 라우트 진입으로 통일했어요.' },
-          { t: '리뷰 기준', d: 'PR 템플릿과 리뷰 기준으로 머지 시간을 줄였어요.' } ],
-        trouble: [ { p: '임시 저장 후 다시 열면 이전 입력이 섞여 보임', c: '폼 상태와 서버 데이터 초기화 시점 불일치', s: '라우트 진입 시 스토어 초기화' } ],
-        results: ['모집글 목록', '신청 관리'] }
-    };
-    const TABS = [['홈','home'],['소개','about'],['이력 및 활동','history'],['프로젝트','projects'],['트러블슈팅','trouble'],['연락처','contact']];
-    const show = () => !s.detail;
-    if (!this._url) {
-      const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
-      const html = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>김지원 포트폴리오</title></head><body style="font-family:sans-serif;max-width:960px;margin:40px auto;padding:0 16px">'
-        + '<nav><a href="#home">홈</a> · <a href="#about">소개</a> · <a href="#history">이력 및 활동</a> · <a href="#projects">프로젝트</a> · <a href="#trouble">트러블슈팅</a> · <a href="#contact">연락처</a></nav>'
-        + '<section id="home"><h1>사용자가 매일 쓰는 화면을<br>근거 있게 만드는 개발자</h1></section>'
-        + '<section id="projects"><h2>프로젝트</h2>' + all.map(p => '<h3>' + esc(p.title) + '</h3><p>' + esc(p.stack) + '</p>').join('') + '</section>'
-        + '<section id="contact"><h2>연락처</h2><p>jiwon.dev@example.com</p></section></body></html>';
-      try { this._url = URL.createObjectURL(new Blob([html], { type: 'text/html' })); } catch (e) { this._url = '#'; }
-    }
+    const text = (v) => (typeof v === "string" ? v : (v == null ? "" : String(v)));
+    const pair = (v) => { const a = Array.isArray(v) ? v : []; return [text(a[0]), text(a[1])]; };
+    const isHttp = (v) => /^https?:\/\//i.test(text(v));
+    const imageAddress = (v) => { const t = text(v); return /^(https?:|data:image\/)/i.test(t) || t.indexOf("images/") >= 0 ? t : ""; };
+    const linkName = (label) => (text(label).toUpperCase() === "GITHUB" ? "GitHub" : text(label));
+    const home = page.home || {}, about = page.about || {}, history = page.history || {}, contact = page.contact || {};
+    const edu = history.education || {};
+    const headline = pair(home.headline), summary = pair(home.summary);
+    // 프로필 사진: photo, 없으면 photos 첫 장 (프론트는 photo만 씀)
+    const photoSrc = imageAddress(home.photo) || imageAddress(((home.photos || [])[0] || {}).file);
+    const cards = page.projects || [];
+    const techs = cards.map((c) => text(c.main_tech)).filter((t, i, all) => t && all.indexOf(t) === i);
+    const filter = techs.indexOf(s.filter) >= 0 ? s.filter : null;
+    const hasProjects = cards.length > 0;
+    const email = text(contact.email);
+    const repoName = (c) => { const url = text(c.github_url).replace(/\/+$/, ""); const last = url.split("/").pop(); return (url && last) || text(c.id) || "project"; };
+    const detailOf = (c) => { const parts = text(c.detail_page).split("/"); return parts.length > 1 && parts[0] ? text(c.detail_page) : ""; };
+    if (typeof document !== "undefined" && page.owner) document.title = text(page.owner) + " 포트폴리오";
     return {
-      pfName: this.props.name || '프론트엔드 지원용',
-      tabs: TABS.map(([n, id]) => { const on = s.detail ? id === 'projects' : s.tab === id; return { n, cls: on ? 'on' : '', cur: on ? 'true' : 'false', pick: () => this._go(id) }; }),
-      inDetail: !!s.detail, d: DETAIL[s.detail] || DETAIL.cineflow, closeDetail: () => this._go('projects'),
-      sHome: show('home'), sAbout: show('about'), sHistory: show('history'), sProjects: show('projects'), sTrouble: show('trouble'), sContact: show('contact'),
-      htmlUrl: this._url, saved: s.saved, onSaveHtml: () => this.setState({ saved: true }),
-      groups: [
-        { name: '프론트엔드', desc: '화면 구현에 직접 사용한 기술', rows: [
-          { t: 'JavaScript · TypeScript', e: '타입 기반 컴포넌트 설계, 공통 테이블 컴포넌트' },
-          { t: 'React · Next.js', e: '스터디 모집 서비스, 개발 블로그 구현' },
-          { t: 'HTML · CSS', e: '레이아웃 구성과 접근성 마크업' } ] },
-        { name: '백엔드 · 데이터', desc: '화면과 이어지는 API와 데이터 처리 경험', rows: [
-          { t: 'Java · Spring Boot', e: '예매 API, 좌석 동시성 제어' },
-          { t: 'JPA · MySQL', e: 'N+1 조회 개선, fetch join · batch size' } ] },
-        { name: '도구 · 협업', desc: '팀 프로젝트에서 사용한 도구', rows: [
-          { t: 'Git · GitHub', e: 'PR 템플릿 · 리뷰 기준 운영' } ] }
-      ],
-      mainTech: [ { n: 'TypeScript', c: '#3178C6' }, { n: 'React', c: '#2443C4' }, { n: 'Next.js', c: '#15171A' },
-        { n: 'Java', c: '#B07219' }, { n: 'Spring Boot', c: '#5B8C3A' }, { n: 'MySQL', c: '#4479A1' } ],
-      awards: [ { date: '2025.11', name: '한빛대학교 교내 해커톤 우수상' } ],
-      acts: [
-        { period: '2026.03 – 2026.08', name: '한빛대학교 웹개발 동아리 DEVLAB', role: '프론트엔드 리드',
-          items: ['동아리 공식 홈페이지 리뉴얼', '신입 부원 React 스터디 운영'] },
-        { period: '2025.07 – 2025.08', name: '하계 SW 부트캠프', role: '웹 풀스택 과정 수료',
-          items: ['Spring Boot · React 팀 프로젝트', 'REST API 설계와 배포 실습'] },
-        { period: '2025.03 – 2025.12', name: '알고리즘 스터디', role: '운영',
-          items: ['주 2회 문제 풀이 · 코드 리뷰'] }
-      ],
-      certs: [ { name: '정보처리기사', org: '한국산업인력공단', date: '2026.06' }, { name: 'TOEIC 850', org: 'ETS', date: '2026.03' },
-        { name: '교내 해커톤 우수상', org: '한빛대학교', date: '2025.11' } ],
-      filters: names.map(n => ({ n, cls: s.filter === n ? 'ft on' : 'ft', sel: s.filter === n ? 'true' : 'false', pick: () => this.setState({ filter: n }) })),
-      projects: all.filter(p => s.filter === '전체' || p.main === s.filter).map(p => ({ ...p, detail_page: 'PortfolioDetail.html', github_url: 'https://github.com', cover: '', hasCover: false, showCoverText: true, open: () => { this.setState({ detail: p.repo, tab: 'projects' }); try { window.scrollTo(0, 0); } catch (e) {} } })),
-      troubles: [
-        { stack: 'SPRING BOOT · JPA · MYSQL', project: 'CineFlow', tag: '예매 동시성', title: '같은 좌석 중복 예매 막기',
-          p: '같은 좌석에 동시에 예매하면 2건이 저장됨', c: '좌석 조회와 갱신 사이의 경쟁 조건', s: '비관적 락 적용 + 100건 동시 요청 테스트 작성', r: '동시 요청에서도 중복 예매 0건', detail_page: 'PortfolioDetail.html' },
-        { stack: 'SPRING BOOT · JPA · MYSQL', project: 'CineFlow', tag: '조회 성능', title: '상영 목록 N+1 조회 줄이기',
-          p: '상영 목록 조회 시 회차 수만큼 쿼리 반복', c: '연관 엔티티 지연 로딩', s: 'fetch join과 batch size 설정', r: '목록 조회 쿼리 1회로 감소', detail_page: 'PortfolioDetail.html' }
-      ],
-      links: [ { k: 'GITHUB', v: 'github.com/jiwon-kim' }, { k: '블로그', v: 'jiwon.dev' } ],
-      headlineLead: '사용자가 매일 쓰는 화면을', headlineAccent: '근거 있게 만드는 개발자',
-      summaryLine1: 'React · TypeScript · Spring Boot 기반 웹 프로젝트', summaryLine2: '예매 · 관리자 화면 · 스터디 모집 서비스 구현',
-      statProjects: '2', statAwards: '1', statActivities: '3', photoText: '김',
-      photoSrc: '', hasPhoto: false, showPhotoText: true, gallery: [], hasGallery: false,
-      location: '서울 강남구 · 강서구', position: '신입 프론트엔드 개발자 포지션 지원',
-      eduMajor: '컴퓨터공학과', eduSchool: '한빛대학교 · 대학교(4년) · 졸업예정', eduPeriod: '2021.03 – 2027.02',
-      email: 'jiwon.dev@example.com', footer: '© 2026 김지원', githubUrl: 'https://github.com', blogUrl: 'https://example.com',
-      aboutTitle: '사용 기술 및 경험', aboutDescription: '화면 구현을 중심으로, 백엔드 연동과 데이터 처리까지 프로젝트에서 직접 사용한 기술을 정리했어요.',
-      historyTitle: '이력 및 활동', historyDescription: '학습 과정, 활동 기간, 자격 · 수상',
-      activitiesTitle: '활동 및 경험', activitiesDescription: '동아리, 교육, 스터디로 쌓은 협업과 구현 경험',
-      contactTitle: '연락처', contactDescription: '채용 문의나 협업 제안은 이메일로 보내주세요.',
-      copyLabel: s.copied ? '복사했어요' : '이메일 복사', copy: () => this.setState({ copied: true })
+      tabs: SECTIONS.filter((x) => x[0] !== "projects" || hasProjects).map((x) => ({
+        label: x[1], cls: s.tab === x[0] ? "on" : "", cur: s.tab === x[0] ? "true" : null, pick: () => this._go(x[0])
+      })),
+      headline0: headline[0], headline1: headline[1], summary0: summary[0], summary1: summary[1],
+      stats: (home.stats || []).map((x) => ({ label: text(x.label), value: text(x.value) })),
+      photoSrc: photoSrc, hasPhoto: !!photoSrc, showPhotoText: !photoSrc, photoText: text(home.photo_text),
+      location: text(home.location), hasLocation: !!text(home.location).trim(),
+      position: text(home.position), hasPosition: !!text(home.position).trim(),
+      aboutTitle: text(about.title) || "사용 기술 및 경험",
+      aboutDescription: text(about.description), hasAboutDescription: !!text(about.description),
+      groups: (about.groups || []).map((g) => ({
+        name: text(g.name), description: text(g.description), hasDescription: !!text(g.description),
+        rows: (g.rows || []).map((r) => ({ name: text(r.name), experience: text(r.experience) }))
+      })),
+      mainTech: (about.main_tech || []).map((t) => text(t && t.name)).filter(Boolean),
+      hasMainTech: (about.main_tech || []).length > 0,
+      awards: (about.awards || []).map((a) => ({ date: text(a.date), name: text(a.name) })),
+      hasAwards: (about.awards || []).length > 0,
+      historyTitle: text(history.title) || "이력 및 활동",
+      historyDescription: text(history.description), hasHistoryDescription: !!text(history.description),
+      activitiesTitle: text(history.activities_title),
+      activitiesDescription: text(history.activities_description), hasActivitiesDescription: !!text(history.activities_description),
+      acts: (history.activities || []).map((a) => {
+        const items = (a.items || []).map(text).filter(Boolean);
+        return { period: text(a.period), name: text(a.name), role: text(a.role), hasRole: !!text(a.role), items: items, hasItems: items.length > 0 };
+      }),
+      hasEducation: !!(text(edu.major) || text(edu.school) || text(edu.period)),
+      eduMajor: text(edu.major), eduSchool: text(edu.school), eduPeriod: text(edu.period),
+      certs: (history.certificates || []).map((c) => ({ name: text(c.name), meta: [text(c.org), text(c.date)].filter(Boolean).join(" · ") })),
+      hasCerts: (history.certificates || []).length > 0,
+      hasProjects: hasProjects,
+      hasFilters: techs.length > 1,
+      filters: [null].concat(techs).map((t) => ({
+        label: t || "전체", cls: filter === t ? "on" : "", sel: filter === t ? "true" : "false", pick: () => this.setState({ filter: t })
+      })),
+      projects: cards.filter((c) => !filter || text(c.main_tech) === filter).map((c, i) => {
+        const cover = imageAddress(c.cover_image);
+        const ok = !!cover && !s.failed[cover];
+        return {
+          cover: cover, hasCover: ok, showAuto: !ok,
+          coverFailed: () => this.setState({ failed: Object.assign({}, s.failed, { [cover]: true }) }),
+          repo: repoName(c), language: text(c.language), hasLanguage: !!text(c.language),
+          mainTech: text(c.main_tech), period: text(c.period), title: text(c.title), stack: text(c.stack),
+          summary: (c.summary || []).map(text).filter(Boolean),
+          detailPage: detailOf(c), hasDetail: !!detailOf(c),
+          githubUrl: text(c.github_url), hasGithub: isHttp(c.github_url)
+        };
+      }),
+      troubles: (page.troubleshooting || []).map((t) => ({
+        stack: text(t.stack), hasStack: !!text(t.stack), project: text(t.project), tag: text(t.tag), hasTag: !!text(t.tag), title: text(t.title),
+        rows: TROUBLE_ROWS.map((r) => ({ label: r[1], text: text(t[r[0]]) }))
+      })),
+      noTroubles: (page.troubleshooting || []).length === 0,
+      contactDescription: text(contact.description), hasContactDescription: !!text(contact.description),
+      links: (contact.links || []).map((l) => ({ label: text(l.label), value: text(l.value) })),
+      linkButtons: (contact.links || []).filter((l) => isHttp(l.url)).map((l) => ({ label: linkName(l.label), url: text(l.url) })),
+      email: email, hasEmail: !!email, noEmail: !email,
+      copyLabel: s.copied ? "복사했어요" : "이메일 복사",
+      copy: () => {
+        const done = () => { this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 1500); };
+        try { navigator.clipboard.writeText(email).then(done, () => {}); } catch (e) {}
+      },
+      footer: text(page.footer)
     };
   }
 }

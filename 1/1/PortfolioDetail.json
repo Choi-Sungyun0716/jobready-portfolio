@@ -27,7 +27,7 @@
     "Schema"
   ],
   "github_url": "https://github.com/Choi-Sungyun0716/esports-portal-management",
-  "hero_image": "images/hero.webp",
+  "hero_image": "images/hero.png",
   "download_filename": "esports-portal-management-portfolio.html",
   "flow": [
     "팀/선수/경기/뉴스/패치노트 목록 및 상세 조회",
@@ -69,6 +69,14 @@
   "screens": [
     {
       "file": "images/screen-1.jpg",
+      "label": ""
+    },
+    {
+      "file": "images/screen-2.webp",
+      "label": ""
+    },
+    {
+      "file": "images/screen-3.png",
       "label": ""
     }
   ]
