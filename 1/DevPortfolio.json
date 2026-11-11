@@ -1,15 +1,15 @@
 {
   "name": "백엔드",
-  "owner": "최성윤",
-  "footer": "© 2026 최성윤",
+  "owner": "Choi-Sungyun0716",
+  "footer": "© 2026 Choi-Sungyun0716",
   "home": {
     "headline": [
-      "성실하고 책임감 있게 끝까지 구현하는 백엔드 개발자",
-      "영화 서비스의 흐름과 운영 조건을 함께 챙기는 개발자"
+      "파이썬 기반 RAG 제작 경험을 바탕으로, 근거 기반 생성 서버를 설계한 백엔드 지원자",
+      "GitHub 저장소 분석부터 검색 검증, 생성 흐름 분리까지 구현한 Python·Jinja 기반 서버 경험"
     ],
     "summary": [
-      "Spring Boot 기반 Cineflow 프로젝트에서 홈 화면, 영화 상세, 극장·상영관 관리, 결제 상태 처리, 레거시 URL 정리를 맡아 백엔드 흐름을 구현했습니다.",
-      "TMDB 외부 데이터와 로컬 데이터를 함께 다루며, 연결된 회차와 좌석 조건까지 고려해 서비스 안정성을 높이는 방향으로 개발했습니다."
+      "GitHub 저장소를 검사해 필요한 파일을 수집하고, 문서를 청킹·벡터화해 검색 가능한 형태로 적재한 뒤 생성 결과를 근거 검색으로 검증하는 RAG 서버를 구현했습니다.",
+      "포트폴리오와 면접 생성 그래프를 분리하고, 템플릿과 JSON 데이터를 분리해 프로젝트별 상세 페이지와 커버 이미지를 유연하게 구성했습니다."
     ],
     "stats": [
       {
@@ -18,15 +18,15 @@
       },
       {
         "label": "수상 경험",
-        "value": 1
+        "value": 0
       },
       {
         "label": "활동",
-        "value": 2
+        "value": 1
       }
     ],
-    "photo_text": "최",
-    "photo": "images/photo.jpg",
+    "photo_text": "C",
+    "photo": "",
     "photos": [],
     "location": "서울 성동구",
     "position": "백엔드"
@@ -56,12 +56,8 @@
             "experience": ""
           },
           {
-            "name": "CSS",
-            "experience": ""
-          },
-          {
             "name": "Java",
-            "experience": "백엔드"
+            "experience": ""
           },
           {
             "name": "JavaScript",
@@ -77,10 +73,6 @@
           },
           {
             "name": "Dockerfile",
-            "experience": ""
-          },
-          {
-            "name": "Batchfile",
             "experience": ""
           }
         ]
@@ -104,20 +96,15 @@
         "color": "#2443C4"
       },
       {
-        "name": "CSS",
+        "name": "Java",
         "color": "#2443C4"
       },
       {
-        "name": "Java",
+        "name": "JavaScript",
         "color": "#2443C4"
       }
     ],
-    "awards": [
-      {
-        "date": "2026.2",
-        "name": "교내 캡스톤"
-      }
-    ]
+    "awards": []
   },
   "history": {
     "title": "이력 및 활동",
@@ -130,88 +117,83 @@
         "name": "졸업작품",
         "role": "팀장",
         "items": [
-          "ai서버 개발"
+          "ai서버 제작"
         ]
-      },
-      {
-        "period": "2025.5 - 2025.7",
-        "name": "동아리",
-        "role": "백엔드",
-        "items": []
       }
     ],
     "education": {
       "major": "컴퓨터공학",
-      "school": "광운대학교 · 대학교(4년) · 재학중",
-      "period": "2022.02 – 2027.02"
+      "school": "광운대학교 · 대학교(4년) · 휴학중",
+      "period": ""
     },
     "certificates": [
       {
-        "name": "정보처리기사",
+        "name": "정보처리 기사",
         "org": "대한민국",
         "date": "2025.7"
-      },
-      {
-        "name": "참잘했어요상",
-        "org": "광운대학교",
-        "date": "2026.2"
-      },
-      {
-        "name": "TOEIC : 850",
-        "org": "토익",
-        "date": "2026.3"
       }
     ]
   },
   "projects": [
     {
-      "id": "cineflow-spring-boot",
+      "id": "ai",
       "detail_page": "1/PortfolioDetail.html",
-      "github_url": "https://github.com/Choi-Sungyun0716/cineflow-spring-boot",
-      "language": "Java",
+      "github_url": "https://github.com/AGENT-KW/AI",
+      "language": "Python",
       "language_color": "#2443C4",
       "cover_bg": "#1F2430",
       "cover_ink": "#F4F5F2",
-      "main_tech": "Java",
-      "period": "2026.03 – 2026.07",
-      "title": "Cineflow Spring Boot",
-      "stack": "Java · Spring Boot · Spring MVC · Spring Transaction · Spring RestClient · Thymeleaf · HTML · CSS · JavaScript",
+      "main_tech": "Python",
+      "period": "2026.02 – 2026.11",
+      "title": "근거 기반 포트폴리오·면접 생성 AI 서버",
+      "stack": "Python · HTML · Jinja",
       "summary": [
-        "TMDB 데이터가 비어도 로컬 데이터를 fallback으로 사용해 홈 화면이 비지 않도록 구성했습니다.",
-        "상영관 수정 시 회차와 좌석 정합성을 서비스 계층에서 강제해 데이터 오류를 예방했습니다.",
-        "결제 상태를 단순 저장이 아니라 상태 전이로 관리해 취소 이력 추적이 가능하도록 설계했습니다."
+        "RAG 재인덱싱과 근거 검증을 결합해 최신 사용자 문맥을 반영하는 생성 흐름을 만들었습니다.",
+        "GitHub 저장소 분석에서 잘린 트리는 중단해 불완전한 입력으로 잘못된 분석이 출력되는 문제를 방지했습니다.",
+        "면접 기록 삭제 API와 파일 단위 저장소 정리를 추가해 생성 결과를 실제 운영 가능한 데이터로 다뤘습니다."
       ],
-      "cover_image": "1/images/hero.png"
+      "cover_image": ""
     }
   ],
   "troubleshooting": [
     {
       "stack": "",
-      "project": "Cineflow Spring Boot",
+      "project": "근거 기반 포트폴리오·면접 생성 AI 서버",
       "tag": "",
-      "title": "TMDB 외부 데이터가 비어 있거나 실패하면 홈 화면의 영화 섹션이 비어 보일 수 있었습니다.",
-      "problem": "TMDB 외부 데이터가 비어 있거나 실패하면 홈 화면의 영화 섹션이 비어 보일 수 있었습니다.",
-      "cause": "홈 화면이 외부 영화 메타데이터에 의존하고 있어 네트워크나 응답 상태에 따라 화면 콘텐츠가 불안정해질 수 있었습니다.",
-      "solution": "HomeController의 withLocalFallback()에서 TMDB 결과가 비어 있으면 로컬 저장 데이터를 대신 사용하는 fallback 로직을 두었습니다.",
-      "result": "외부 API 상태와 무관하게 홈 화면이 최소한의 콘텐츠를 유지하도록 구성되었습니다.",
+      "title": "사용자 데이터가 바뀌어도 검색 인덱스에 오래된 정보가 남을 수 있었습니다.",
+      "problem": "사용자 데이터가 바뀌어도 검색 인덱스에 오래된 정보가 남을 수 있었습니다.",
+      "cause": "벡터 저장소가 누적형이면 삭제된 Oracle 레코드가 검색 결과에 계속 섞일 수 있습니다.",
+      "solution": "retrieval/service.py에서 delete_user_sources()로 기존 사용자 소스를 먼저 삭제한 뒤 upsert()로 다시 적재하도록 구성했습니다.",
+      "result": "최신 문맥을 기준으로 검색·생성이 이뤄지도록 정합성을 높였습니다.",
       "detail_page": ""
     },
     {
       "stack": "",
-      "project": "Cineflow Spring Boot",
+      "project": "근거 기반 포트폴리오·면접 생성 AI 서버",
       "tag": "",
-      "title": "이미 회차가 연결된 상영관의 극장이나 좌석 수를 변경하면 기존 회차와 좌석 데이터가 깨질 수 있었습니다.",
-      "problem": "이미 회차가 연결된 상영관의 극장이나 좌석 수를 변경하면 기존 회차와 좌석 데이터가 깨질 수 있었습니다.",
-      "cause": "상영관 정보가 회차와 좌석 템플릿의 기준이기 때문에 이후 변경이 데이터 정합성을 훼손할 수 있었습니다.",
-      "solution": "ScreenService.updateScreen()에서 연결된 회차 존재 여부를 확인하고, 조건을 만족하면 핵심 속성 변경을 예외로 차단했습니다.",
-      "result": "UI 우회 요청도 서버 계층에서 막을 수 있어 상영관 데이터 정합성이 유지됩니다.",
+      "title": "대형 GitHub 저장소를 분석할 때 트리 응답이 잘려 일부 파일만으로 잘못된 분석이 나올 수 있었습니다.",
+      "problem": "대형 GitHub 저장소를 분석할 때 트리 응답이 잘려 일부 파일만으로 잘못된 분석이 나올 수 있었습니다.",
+      "cause": "GitHub API의 recursive tree 조회가 truncated 상태가 될 수 있기 때문입니다.",
+      "solution": "services/github_code_service.py에서 truncated 여부를 확인하고 예외를 발생시켜 분석을 중단하도록 했습니다.",
+      "result": "불완전한 데이터로 잘못된 분석을 내보내는 위험을 줄였습니다.",
+      "detail_page": ""
+    },
+    {
+      "stack": "",
+      "project": "근거 기반 포트폴리오·면접 생성 AI 서버",
+      "tag": "",
+      "title": "생성된 면접 기록을 정리하거나 삭제하는 운영 기능이 부족했습니다.",
+      "problem": "생성된 면접 기록을 정리하거나 삭제하는 운영 기능이 부족했습니다.",
+      "cause": "기록 생성만 있고 삭제 경로가 없으면 데이터가 계속 쌓여 관리가 어려워집니다.",
+      "solution": "routers/interview_routes.py에 개별 삭제와 전체 삭제 API를 추가하고, services/interview_record_store.py에서 파일 시스템 단위로 안전하게 삭제하도록 구현했습니다.",
+      "result": "면접 기록을 예측 가능한 방식으로 관리할 수 있게 되었습니다.",
       "detail_page": ""
     }
   ],
   "contact": {
     "title": "연락처",
     "description": "채용 문의나 협업 제안은 이메일로 보내주세요.",
-    "email": "csu030716@naver.com",
+    "email": "",
     "links": [
       {
         "label": "GITHUB",
